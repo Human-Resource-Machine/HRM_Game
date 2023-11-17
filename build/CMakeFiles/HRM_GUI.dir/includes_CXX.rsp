@@ -1,0 +1,1 @@
+-ID:/program/HRM_Game/build -ID:/program/HRM_Game -ID:/program/HRM_Game/build/HRM_GUI_autogen/include -isystem D:/app/Qt/6.6.0/mingw_64/include/QtWidgets -isystem D:/app/Qt/6.6.0/mingw_64/include -isystem D:/app/Qt/6.6.0/mingw_64/include/QtCore -isystem "D:/app/Qt/6.6.0/mingw_64/mkspecs/win32-g++" -isystem D:/app/Qt/6.6.0/mingw_64/include/QtGui
