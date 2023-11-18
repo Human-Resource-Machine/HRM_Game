@@ -75,11 +75,19 @@ HRM_GUI_autogen/timestamp: CMakeFiles/HRM_GUI.dir/compiler_depend.ts
 	D:\app\cmake-3.28.0-rc5-windows-x86_64\bin\cmake.exe -E cmake_autogen D:/program/HRM_Game/build/CMakeFiles/HRM_GUI_autogen.dir/AutogenInfo.json Debug
 	D:\app\cmake-3.28.0-rc5-windows-x86_64\bin\cmake.exe -E touch D:/program/HRM_Game/build/HRM_GUI_autogen/timestamp
 
+HRM_GUI_autogen/EWIEGA46WW/qrc_QtResourse.cpp: D:/program/HRM_Game/QtResourse.qrc
+HRM_GUI_autogen/EWIEGA46WW/qrc_QtResourse.cpp: CMakeFiles/HRM_GUI_autogen.dir/AutoRcc_QtResourse_EWIEGA46WW_Info.json
+HRM_GUI_autogen/EWIEGA46WW/qrc_QtResourse.cpp: D:/program/HRM_Game/images/icon.png
+HRM_GUI_autogen/EWIEGA46WW/qrc_QtResourse.cpp: D:/program/HRM_Game/images/home.png
+HRM_GUI_autogen/EWIEGA46WW/qrc_QtResourse.cpp: D:/app/Qt/6.6.0/mingw_64/./bin/rcc.exe
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --blue --bold --progress-dir=D:\program\HRM_Game\build\CMakeFiles --progress-num=$(CMAKE_PROGRESS_2) "Automatic RCC for QtResourse.qrc"
+	D:\app\cmake-3.28.0-rc5-windows-x86_64\bin\cmake.exe -E cmake_autorcc D:/program/HRM_Game/build/CMakeFiles/HRM_GUI_autogen.dir/AutoRcc_QtResourse_EWIEGA46WW_Info.json Debug
+
 CMakeFiles/HRM_GUI.dir/HRM_GUI_autogen/mocs_compilation.cpp.obj: CMakeFiles/HRM_GUI.dir/flags.make
 CMakeFiles/HRM_GUI.dir/HRM_GUI_autogen/mocs_compilation.cpp.obj: CMakeFiles/HRM_GUI.dir/includes_CXX.rsp
 CMakeFiles/HRM_GUI.dir/HRM_GUI_autogen/mocs_compilation.cpp.obj: HRM_GUI_autogen/mocs_compilation.cpp
 CMakeFiles/HRM_GUI.dir/HRM_GUI_autogen/mocs_compilation.cpp.obj: CMakeFiles/HRM_GUI.dir/compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=D:\program\HRM_Game\build\CMakeFiles --progress-num=$(CMAKE_PROGRESS_2) "Building CXX object CMakeFiles/HRM_GUI.dir/HRM_GUI_autogen/mocs_compilation.cpp.obj"
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=D:\program\HRM_Game\build\CMakeFiles --progress-num=$(CMAKE_PROGRESS_3) "Building CXX object CMakeFiles/HRM_GUI.dir/HRM_GUI_autogen/mocs_compilation.cpp.obj"
 	D:\app\Qt\Tools\mingw1120_64\bin\g++.exe $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT CMakeFiles/HRM_GUI.dir/HRM_GUI_autogen/mocs_compilation.cpp.obj -MF CMakeFiles\HRM_GUI.dir\HRM_GUI_autogen\mocs_compilation.cpp.obj.d -o CMakeFiles\HRM_GUI.dir\HRM_GUI_autogen\mocs_compilation.cpp.obj -c D:\program\HRM_Game\build\HRM_GUI_autogen\mocs_compilation.cpp
 
 CMakeFiles/HRM_GUI.dir/HRM_GUI_autogen/mocs_compilation.cpp.i: cmake_force
@@ -94,7 +102,7 @@ CMakeFiles/HRM_GUI.dir/src/HRM_GUI.cpp.obj: CMakeFiles/HRM_GUI.dir/flags.make
 CMakeFiles/HRM_GUI.dir/src/HRM_GUI.cpp.obj: CMakeFiles/HRM_GUI.dir/includes_CXX.rsp
 CMakeFiles/HRM_GUI.dir/src/HRM_GUI.cpp.obj: D:/program/HRM_Game/src/HRM_GUI.cpp
 CMakeFiles/HRM_GUI.dir/src/HRM_GUI.cpp.obj: CMakeFiles/HRM_GUI.dir/compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=D:\program\HRM_Game\build\CMakeFiles --progress-num=$(CMAKE_PROGRESS_3) "Building CXX object CMakeFiles/HRM_GUI.dir/src/HRM_GUI.cpp.obj"
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=D:\program\HRM_Game\build\CMakeFiles --progress-num=$(CMAKE_PROGRESS_4) "Building CXX object CMakeFiles/HRM_GUI.dir/src/HRM_GUI.cpp.obj"
 	D:\app\Qt\Tools\mingw1120_64\bin\g++.exe $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT CMakeFiles/HRM_GUI.dir/src/HRM_GUI.cpp.obj -MF CMakeFiles\HRM_GUI.dir\src\HRM_GUI.cpp.obj.d -o CMakeFiles\HRM_GUI.dir\src\HRM_GUI.cpp.obj -c D:\program\HRM_Game\src\HRM_GUI.cpp
 
 CMakeFiles/HRM_GUI.dir/src/HRM_GUI.cpp.i: cmake_force
@@ -109,7 +117,7 @@ CMakeFiles/HRM_GUI.dir/src/main.cpp.obj: CMakeFiles/HRM_GUI.dir/flags.make
 CMakeFiles/HRM_GUI.dir/src/main.cpp.obj: CMakeFiles/HRM_GUI.dir/includes_CXX.rsp
 CMakeFiles/HRM_GUI.dir/src/main.cpp.obj: D:/program/HRM_Game/src/main.cpp
 CMakeFiles/HRM_GUI.dir/src/main.cpp.obj: CMakeFiles/HRM_GUI.dir/compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=D:\program\HRM_Game\build\CMakeFiles --progress-num=$(CMAKE_PROGRESS_4) "Building CXX object CMakeFiles/HRM_GUI.dir/src/main.cpp.obj"
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=D:\program\HRM_Game\build\CMakeFiles --progress-num=$(CMAKE_PROGRESS_5) "Building CXX object CMakeFiles/HRM_GUI.dir/src/main.cpp.obj"
 	D:\app\Qt\Tools\mingw1120_64\bin\g++.exe $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT CMakeFiles/HRM_GUI.dir/src/main.cpp.obj -MF CMakeFiles\HRM_GUI.dir\src\main.cpp.obj.d -o CMakeFiles\HRM_GUI.dir\src\main.cpp.obj -c D:\program\HRM_Game\src\main.cpp
 
 CMakeFiles/HRM_GUI.dir/src/main.cpp.i: cmake_force
@@ -120,11 +128,27 @@ CMakeFiles/HRM_GUI.dir/src/main.cpp.s: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Compiling CXX source to assembly CMakeFiles/HRM_GUI.dir/src/main.cpp.s"
 	D:\app\Qt\Tools\mingw1120_64\bin\g++.exe $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S D:\program\HRM_Game\src\main.cpp -o CMakeFiles\HRM_GUI.dir\src\main.cpp.s
 
+CMakeFiles/HRM_GUI.dir/HRM_GUI_autogen/EWIEGA46WW/qrc_QtResourse.cpp.obj: CMakeFiles/HRM_GUI.dir/flags.make
+CMakeFiles/HRM_GUI.dir/HRM_GUI_autogen/EWIEGA46WW/qrc_QtResourse.cpp.obj: CMakeFiles/HRM_GUI.dir/includes_CXX.rsp
+CMakeFiles/HRM_GUI.dir/HRM_GUI_autogen/EWIEGA46WW/qrc_QtResourse.cpp.obj: HRM_GUI_autogen/EWIEGA46WW/qrc_QtResourse.cpp
+CMakeFiles/HRM_GUI.dir/HRM_GUI_autogen/EWIEGA46WW/qrc_QtResourse.cpp.obj: CMakeFiles/HRM_GUI.dir/compiler_depend.ts
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=D:\program\HRM_Game\build\CMakeFiles --progress-num=$(CMAKE_PROGRESS_6) "Building CXX object CMakeFiles/HRM_GUI.dir/HRM_GUI_autogen/EWIEGA46WW/qrc_QtResourse.cpp.obj"
+	D:\app\Qt\Tools\mingw1120_64\bin\g++.exe $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT CMakeFiles/HRM_GUI.dir/HRM_GUI_autogen/EWIEGA46WW/qrc_QtResourse.cpp.obj -MF CMakeFiles\HRM_GUI.dir\HRM_GUI_autogen\EWIEGA46WW\qrc_QtResourse.cpp.obj.d -o CMakeFiles\HRM_GUI.dir\HRM_GUI_autogen\EWIEGA46WW\qrc_QtResourse.cpp.obj -c D:\program\HRM_Game\build\HRM_GUI_autogen\EWIEGA46WW\qrc_QtResourse.cpp
+
+CMakeFiles/HRM_GUI.dir/HRM_GUI_autogen/EWIEGA46WW/qrc_QtResourse.cpp.i: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Preprocessing CXX source to CMakeFiles/HRM_GUI.dir/HRM_GUI_autogen/EWIEGA46WW/qrc_QtResourse.cpp.i"
+	D:\app\Qt\Tools\mingw1120_64\bin\g++.exe $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E D:\program\HRM_Game\build\HRM_GUI_autogen\EWIEGA46WW\qrc_QtResourse.cpp > CMakeFiles\HRM_GUI.dir\HRM_GUI_autogen\EWIEGA46WW\qrc_QtResourse.cpp.i
+
+CMakeFiles/HRM_GUI.dir/HRM_GUI_autogen/EWIEGA46WW/qrc_QtResourse.cpp.s: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Compiling CXX source to assembly CMakeFiles/HRM_GUI.dir/HRM_GUI_autogen/EWIEGA46WW/qrc_QtResourse.cpp.s"
+	D:\app\Qt\Tools\mingw1120_64\bin\g++.exe $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S D:\program\HRM_Game\build\HRM_GUI_autogen\EWIEGA46WW\qrc_QtResourse.cpp -o CMakeFiles\HRM_GUI.dir\HRM_GUI_autogen\EWIEGA46WW\qrc_QtResourse.cpp.s
+
 # Object files for target HRM_GUI
 HRM_GUI_OBJECTS = \
 "CMakeFiles/HRM_GUI.dir/HRM_GUI_autogen/mocs_compilation.cpp.obj" \
 "CMakeFiles/HRM_GUI.dir/src/HRM_GUI.cpp.obj" \
-"CMakeFiles/HRM_GUI.dir/src/main.cpp.obj"
+"CMakeFiles/HRM_GUI.dir/src/main.cpp.obj" \
+"CMakeFiles/HRM_GUI.dir/HRM_GUI_autogen/EWIEGA46WW/qrc_QtResourse.cpp.obj"
 
 # External object files for target HRM_GUI
 HRM_GUI_EXTERNAL_OBJECTS =
@@ -132,6 +156,7 @@ HRM_GUI_EXTERNAL_OBJECTS =
 HRM_GUI.exe: CMakeFiles/HRM_GUI.dir/HRM_GUI_autogen/mocs_compilation.cpp.obj
 HRM_GUI.exe: CMakeFiles/HRM_GUI.dir/src/HRM_GUI.cpp.obj
 HRM_GUI.exe: CMakeFiles/HRM_GUI.dir/src/main.cpp.obj
+HRM_GUI.exe: CMakeFiles/HRM_GUI.dir/HRM_GUI_autogen/EWIEGA46WW/qrc_QtResourse.cpp.obj
 HRM_GUI.exe: CMakeFiles/HRM_GUI.dir/build.make
 HRM_GUI.exe: D:/app/Qt/6.6.0/mingw_64/lib/libQt6Widgets.a
 HRM_GUI.exe: D:/app/Qt/6.6.0/mingw_64/lib/libQt6Gui.a
@@ -140,7 +165,7 @@ HRM_GUI.exe: D:/app/Qt/6.6.0/mingw_64/lib/libQt6EntryPoint.a
 HRM_GUI.exe: CMakeFiles/HRM_GUI.dir/linkLibs.rsp
 HRM_GUI.exe: CMakeFiles/HRM_GUI.dir/objects1.rsp
 HRM_GUI.exe: CMakeFiles/HRM_GUI.dir/link.txt
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --bold --progress-dir=D:\program\HRM_Game\build\CMakeFiles --progress-num=$(CMAKE_PROGRESS_5) "Linking CXX executable HRM_GUI.exe"
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --bold --progress-dir=D:\program\HRM_Game\build\CMakeFiles --progress-num=$(CMAKE_PROGRESS_7) "Linking CXX executable HRM_GUI.exe"
 	$(CMAKE_COMMAND) -E cmake_link_script CMakeFiles\HRM_GUI.dir\link.txt --verbose=$(VERBOSE)
 
 # Rule to build all files generated by this target.
@@ -151,6 +176,7 @@ CMakeFiles/HRM_GUI.dir/clean:
 	$(CMAKE_COMMAND) -P CMakeFiles\HRM_GUI.dir\cmake_clean.cmake
 .PHONY : CMakeFiles/HRM_GUI.dir/clean
 
+CMakeFiles/HRM_GUI.dir/depend: HRM_GUI_autogen/EWIEGA46WW/qrc_QtResourse.cpp
 CMakeFiles/HRM_GUI.dir/depend: HRM_GUI_autogen/timestamp
 	$(CMAKE_COMMAND) -E cmake_depends "MinGW Makefiles" D:\program\HRM_Game D:\program\HRM_Game D:\program\HRM_Game\build D:\program\HRM_Game\build D:\program\HRM_Game\build\CMakeFiles\HRM_GUI.dir\DependInfo.cmake "--color=$(COLOR)"
 .PHONY : CMakeFiles/HRM_GUI.dir/depend

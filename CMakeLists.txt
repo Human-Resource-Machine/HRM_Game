@@ -16,6 +16,8 @@ add_compile_options("$<$<CXX_COMPILER_ID:MSVC>:/utf-8>")
 
 add_executable(${PROJECT_NAME}
     WIN32 # If you need a terminal for debug, please comment this statement 
-    ${srcs} 
+    ${srcs}
+    QtResourse.qrc
+    src/HRM_GUI.ui
 ) 
 target_link_libraries(${PROJECT_NAME} PRIVATE Qt6::Widgets) # Qt5 Shared Library

@@ -378,4 +378,21 @@ CMakeFiles/HRM_GUI.dir/src/HRM_GUI.cpp.obj: \
  D:/app/Qt/6.6.0/mingw_64/include/QtWidgets/qstatusbar.h \
  D:/app/Qt/6.6.0/mingw_64/include/QtWidgets/QWidget \
  D:/app/Qt/6.6.0/mingw_64/include/QtWidgets/qwidget.h \
- D:/app/Qt/6.6.0/mingw_64/include/QtWidgets/QMainWindow
+ D:/app/Qt/6.6.0/mingw_64/include/QtWidgets/QMainWindow \
+ D:/app/Qt/6.6.0/mingw_64/include/QtWidgets/QLabel \
+ D:/app/Qt/6.6.0/mingw_64/include/QtWidgets/qlabel.h \
+ D:/app/Qt/6.6.0/mingw_64/include/QtWidgets/qframe.h \
+ D:/app/Qt/6.6.0/mingw_64/include/QtGui/qpicture.h \
+ D:/app/Qt/6.6.0/mingw_64/include/QtCore/qiodevice.h \
+ D:/app/Qt/6.6.0/mingw_64/include/QtGui/qtextdocument.h \
+ D:/app/Qt/6.6.0/mingw_64/include/QtCore/qurl.h \
+ D:/app/Qt/6.6.0/mingw_64/include/QtGui/QPixmap \
+ D:/app/Qt/6.6.0/mingw_64/include/QtGui/qpixmap.h \
+ D:/app/Qt/6.6.0/mingw_64/include/QtGui/QIcon \
+ D:/app/Qt/6.6.0/mingw_64/include/QtGui/qicon.h \
+ D:/app/Qt/6.6.0/mingw_64/include/QtWidgets/QHBoxLayout \
+ D:/app/Qt/6.6.0/mingw_64/include/QtWidgets/qboxlayout.h \
+ D:/app/Qt/6.6.0/mingw_64/include/QtWidgets/qlayout.h \
+ D:/app/Qt/6.6.0/mingw_64/include/QtWidgets/qlayoutitem.h \
+ D:/app/Qt/6.6.0/mingw_64/include/QtWidgets/qboxlayout.h \
+ D:/app/Qt/6.6.0/mingw_64/include/QtWidgets/qgridlayout.h

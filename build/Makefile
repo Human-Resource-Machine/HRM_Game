@@ -154,6 +154,30 @@ HRM_GUI_autogen/fast:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles\HRM_GUI_autogen.dir\build.make CMakeFiles/HRM_GUI_autogen.dir/build
 .PHONY : HRM_GUI_autogen/fast
 
+HRM_GUI_autogen/EWIEGA46WW/qrc_QtResourse.obj: HRM_GUI_autogen/EWIEGA46WW/qrc_QtResourse.cpp.obj
+.PHONY : HRM_GUI_autogen/EWIEGA46WW/qrc_QtResourse.obj
+
+# target to build an object file
+HRM_GUI_autogen/EWIEGA46WW/qrc_QtResourse.cpp.obj:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\HRM_GUI.dir\build.make CMakeFiles/HRM_GUI.dir/HRM_GUI_autogen/EWIEGA46WW/qrc_QtResourse.cpp.obj
+.PHONY : HRM_GUI_autogen/EWIEGA46WW/qrc_QtResourse.cpp.obj
+
+HRM_GUI_autogen/EWIEGA46WW/qrc_QtResourse.i: HRM_GUI_autogen/EWIEGA46WW/qrc_QtResourse.cpp.i
+.PHONY : HRM_GUI_autogen/EWIEGA46WW/qrc_QtResourse.i
+
+# target to preprocess a source file
+HRM_GUI_autogen/EWIEGA46WW/qrc_QtResourse.cpp.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\HRM_GUI.dir\build.make CMakeFiles/HRM_GUI.dir/HRM_GUI_autogen/EWIEGA46WW/qrc_QtResourse.cpp.i
+.PHONY : HRM_GUI_autogen/EWIEGA46WW/qrc_QtResourse.cpp.i
+
+HRM_GUI_autogen/EWIEGA46WW/qrc_QtResourse.s: HRM_GUI_autogen/EWIEGA46WW/qrc_QtResourse.cpp.s
+.PHONY : HRM_GUI_autogen/EWIEGA46WW/qrc_QtResourse.s
+
+# target to generate assembly for a file
+HRM_GUI_autogen/EWIEGA46WW/qrc_QtResourse.cpp.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\HRM_GUI.dir\build.make CMakeFiles/HRM_GUI.dir/HRM_GUI_autogen/EWIEGA46WW/qrc_QtResourse.cpp.s
+.PHONY : HRM_GUI_autogen/EWIEGA46WW/qrc_QtResourse.cpp.s
+
 HRM_GUI_autogen/mocs_compilation.obj: HRM_GUI_autogen/mocs_compilation.cpp.obj
 .PHONY : HRM_GUI_autogen/mocs_compilation.obj
 
@@ -237,6 +261,9 @@ help:
 	@echo ... HRM_GUI_autogen
 	@echo ... HRM_GUI_autogen_timestamp_deps
 	@echo ... HRM_GUI
+	@echo ... HRM_GUI_autogen/EWIEGA46WW/qrc_QtResourse.obj
+	@echo ... HRM_GUI_autogen/EWIEGA46WW/qrc_QtResourse.i
+	@echo ... HRM_GUI_autogen/EWIEGA46WW/qrc_QtResourse.s
 	@echo ... HRM_GUI_autogen/mocs_compilation.obj
 	@echo ... HRM_GUI_autogen/mocs_compilation.i
 	@echo ... HRM_GUI_autogen/mocs_compilation.s

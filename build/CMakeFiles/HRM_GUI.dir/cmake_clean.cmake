@@ -1,4 +1,6 @@
 file(REMOVE_RECURSE
+  "CMakeFiles/HRM_GUI.dir/HRM_GUI_autogen/EWIEGA46WW/qrc_QtResourse.cpp.obj"
+  "CMakeFiles/HRM_GUI.dir/HRM_GUI_autogen/EWIEGA46WW/qrc_QtResourse.cpp.obj.d"
   "CMakeFiles/HRM_GUI.dir/HRM_GUI_autogen/mocs_compilation.cpp.obj"
   "CMakeFiles/HRM_GUI.dir/HRM_GUI_autogen/mocs_compilation.cpp.obj.d"
   "CMakeFiles/HRM_GUI.dir/src/HRM_GUI.cpp.obj"
@@ -11,6 +13,7 @@ file(REMOVE_RECURSE
   "HRM_GUI.exe"
   "HRM_GUI.exe.manifest"
   "HRM_GUI.pdb"
+  "HRM_GUI_autogen/EWIEGA46WW/qrc_QtResourse.cpp"
   "HRM_GUI_autogen/mocs_compilation.cpp"
   "HRM_GUI_autogen/timestamp"
   "libHRM_GUI.dll.a"

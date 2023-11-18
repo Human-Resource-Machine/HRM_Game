@@ -178,6 +178,7 @@ set(CMAKE_MAKEFILE_DEPENDS
   "D:/app/cmake-3.28.0-rc5-windows-x86_64/share/cmake-3.28/Modules/Platform/Windows.cmake"
   "D:/app/cmake-3.28.0-rc5-windows-x86_64/share/cmake-3.28/Modules/Platform/WindowsPaths.cmake"
   "D:/program/HRM_Game/CMakeLists.txt"
+  "D:/program/HRM_Game/QtResourse.qrc"
   "CMakeFiles/3.28.0-rc5/CMakeCXXCompiler.cmake"
   "CMakeFiles/3.28.0-rc5/CMakeRCCompiler.cmake"
   "CMakeFiles/3.28.0-rc5/CMakeSystem.cmake"
@@ -192,6 +193,7 @@ set(CMAKE_MAKEFILE_OUTPUTS
 # Byproducts of CMake generate step:
 set(CMAKE_MAKEFILE_PRODUCTS
   "CMakeFiles/HRM_GUI_autogen.dir/AutogenInfo.json"
+  "CMakeFiles/HRM_GUI_autogen.dir/AutoRcc_QtResourse_EWIEGA46WW_Info.json"
   ".qt/QtDeploySupport.cmake"
   "CMakeFiles/CMakeDirectoryInformation.cmake"
   )

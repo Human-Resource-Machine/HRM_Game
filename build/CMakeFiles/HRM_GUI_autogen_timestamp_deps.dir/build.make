@@ -66,8 +66,8 @@ include CMakeFiles/HRM_GUI_autogen_timestamp_deps.dir/compiler_depend.make
 include CMakeFiles/HRM_GUI_autogen_timestamp_deps.dir/progress.make
 
 CMakeFiles/HRM_GUI_autogen_timestamp_deps: D:/app/Qt/6.6.0/mingw_64/./bin/moc.exe
-CMakeFiles/HRM_GUI_autogen_timestamp_deps: D:/app/Qt/6.6.0/mingw_64/lib/libQt6Widgets.a
 CMakeFiles/HRM_GUI_autogen_timestamp_deps: D:/app/Qt/6.6.0/mingw_64/./bin/uic.exe
+CMakeFiles/HRM_GUI_autogen_timestamp_deps: D:/app/Qt/6.6.0/mingw_64/lib/libQt6Widgets.a
 
 HRM_GUI_autogen_timestamp_deps: CMakeFiles/HRM_GUI_autogen_timestamp_deps
 HRM_GUI_autogen_timestamp_deps: CMakeFiles/HRM_GUI_autogen_timestamp_deps.dir/build.make

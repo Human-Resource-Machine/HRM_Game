@@ -16,5 +16,11 @@
   "command": "D:\\app\\Qt\\Tools\\mingw1120_64\\bin\\g++.exe -DMINGW_HAS_SECURE_API=1 -DQT_CORE_LIB -DQT_GUI_LIB -DQT_NEEDS_QMAIN -DQT_WIDGETS_LIB -DUNICODE -DWIN32 -DWIN64 -D_ENABLE_EXTENDED_ALIGNED_STORAGE -D_UNICODE -D_WIN64 @CMakeFiles/HRM_GUI.dir/includes_CXX.rsp -g -std=gnu++17 -o CMakeFiles\\HRM_GUI.dir\\src\\main.cpp.obj -c D:\\program\\HRM_Game\\src\\main.cpp",
   "file": "D:/program/HRM_Game/src/main.cpp",
   "output": "CMakeFiles/HRM_GUI.dir/src/main.cpp.obj"
+},
+{
+  "directory": "D:/program/HRM_Game/build",
+  "command": "D:\\app\\Qt\\Tools\\mingw1120_64\\bin\\g++.exe -DMINGW_HAS_SECURE_API=1 -DQT_CORE_LIB -DQT_GUI_LIB -DQT_NEEDS_QMAIN -DQT_WIDGETS_LIB -DUNICODE -DWIN32 -DWIN64 -D_ENABLE_EXTENDED_ALIGNED_STORAGE -D_UNICODE -D_WIN64 @CMakeFiles/HRM_GUI.dir/includes_CXX.rsp -g -std=gnu++17 -o CMakeFiles\\HRM_GUI.dir\\HRM_GUI_autogen\\EWIEGA46WW\\qrc_QtResourse.cpp.obj -c D:\\program\\HRM_Game\\build\\HRM_GUI_autogen\\EWIEGA46WW\\qrc_QtResourse.cpp",
+  "file": "D:/program/HRM_Game/build/HRM_GUI_autogen/EWIEGA46WW/qrc_QtResourse.cpp",
+  "output": "CMakeFiles/HRM_GUI.dir/HRM_GUI_autogen/EWIEGA46WW/qrc_QtResourse.cpp.obj"
 }
 ]

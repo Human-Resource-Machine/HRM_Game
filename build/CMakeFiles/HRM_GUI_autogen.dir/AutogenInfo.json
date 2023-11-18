@@ -224,7 +224,8 @@
 		"D:/app/cmake-3.28.0-rc5-windows-x86_64/share/cmake-3.28/Modules/CMakeFindDependencyMacro.cmake",
 		"D:/app/Qt/6.6.0/mingw_64/lib/cmake/Qt6Widgets/Qt6QWindowsVistaStylePluginTargets.cmake",
 		"D:/app/Qt/6.6.0/mingw_64/lib/cmake/Qt6Widgets/Qt6QWindowsVistaStylePluginTargets-relwithdebinfo.cmake",
-		"D:/app/Qt/6.6.0/mingw_64/lib/cmake/Qt6Widgets/Qt6QWindowsVistaStylePluginAdditionalTargetInfo.cmake"
+		"D:/app/Qt/6.6.0/mingw_64/lib/cmake/Qt6Widgets/Qt6QWindowsVistaStylePluginAdditionalTargetInfo.cmake",
+		"D:/program/HRM_Game/QtResourse.qrc"
 	],
 	"CMAKE_SOURCE_DIR" : "D:/program/HRM_Game",
 	"DEP_FILE" : "D:/program/HRM_Game/build/HRM_GUI_autogen/deps",
