@@ -31,6 +31,7 @@ public:
     struct PlayerRecord {
         int level;
         bool valid; // 存档是否有效
+        std::string name; // 应当是一个长度不超过 8 的字符串
         RobotType robot_type;
     } card[3];
 
@@ -53,6 +54,7 @@ public:
             // 先给默认值
             card[i].level = 1;
             card[i].robot_type = RobotType::male;
+            card[i].name = "default_name";
             std::string line;
             while(!fin.eof())
             {
@@ -70,6 +72,10 @@ public:
                         card[i].robot_type = RobotType::male;
                     else if(type == "female")
                         card[i].robot_type = RobotType::female;
+                }
+                else if(line.substr(0,6) == "name: ")
+                {
+                    card[i].name = line.substr(6, 8);
                 }
             }
         }
@@ -93,6 +99,7 @@ public:
                 fout << "robot_type: male" << std::endl;
             else
                 fout << "robot_type: female" << std::endl;
+            fout << "name: " << card[i].name << std::endl;
         }
     }
 
@@ -152,7 +159,7 @@ public:
         {
             // 将光标移动到指定位置并打印机器人
             set_cursor(pos_x, pos_y);
-            std::cout << "_____";
+            std::cout << "__!__";
             set_cursor(pos_x, pos_y+1);
             std::cout << "|@ @|";
             set_cursor(pos_x, pos_y+2);

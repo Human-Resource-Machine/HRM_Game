@@ -36,14 +36,152 @@ void HRM_GUI::run()
     SetConsoleOutputCP(CP_UTF8);
     setConsoleFontAndSize(L"KaiTi");
     clear_screen();
-    // 打印欢迎界面
-    welcome();
+    // 欢迎界面
+    int continue_last = welcome();
+    clear_screen();
+    // 角色创建
+    if(!continue_last)
+    {
+        // 删除旧档
+        record->card[record_id].valid = false;
+        record->save();
+        new_record();
+    }
 }
 
-void HRM_GUI::welcome()
+void HRM_GUI::new_record()
+{
+    // 新建存档界面
+    int border_x = 50;
+    int border_y = 10;
+    std::cout << "+";
+    for(int i = 0; i < border_x - 1; i++)
+    {
+        std::cout << "-";
+    }
+    std::cout << "+" << std::endl << '|';
+    set_cursor(border_x/2 - 12, 1);
+    std::cout << "创建新角色";
+    set_cursor(border_x, 1);
+    std::cout << '|' << std::endl << '+';
+    for(int i = 0; i < border_x - 1; i++)
+    {
+        std::cout << "-";
+    }
+    std::cout << '+' << std::endl << '|';
+    set_cursor(1 ,3);
+    std::cout << "我们给您拍摄了工作照，哪一张您更满意呢：";
+    coord last_pos1 = cursor_now();
+    set_cursor(border_x, 3);
+    std::cout << '|' << std::endl << '+';
+    for(int i = 0; i < (border_x - 1) / 2; i++)
+    {
+        std::cout << "-";
+    }
+    std::cout << '+';
+    for(int i = (border_x-1)/2 + 1; i < border_x - 1; i++)
+    {
+        std::cout << "-";
+    }
+    std::cout << '+' << std::endl;
+    for(int i = 0; i < 9; i++)
+    {
+        std::cout << '|';
+        for(int j = 0; j < (border_x - 1) / 2; j++)
+        {
+            std::cout << ' ';
+        }
+        std::cout << '|';
+        for(int j = (border_x-1)/2 + 1; j < border_x - 1; j++)
+        {
+            std::cout << ' ';
+        }
+        std::cout << '|' << std::endl;
+    }
+    std::cout << '+';
+    for(int i = 0; i < (border_x - 1) / 2; i++)
+    {
+        std::cout << "-";
+    }
+    std::cout << '+';
+    for(int i = (border_x-1)/2 + 1; i < border_x - 1; i++)
+    {
+        std::cout << "-";
+    }
+    std::cout << '+' << std::endl;
+    std::cout << "|请输入您的昵称：（不超过8个英文字符）";
+    coord last_pos2 = cursor_now();
+    set_cursor(border_x, last_pos2.y);
+    std::cout << '|' << std::endl << '+';
+    for(int i = 0; i < border_x - 1; i++)
+    {
+        std::cout << "-";
+    }
+    std::cout << '+' << std::endl;
+    // 绘制工作照
+    Robot *robot1 = new Robot(RobotType::male);
+    Robot *robot2 = new Robot(RobotType::female);
+    set_cursor(border_x/4, 5);
+    std::cout << "1. ";
+
+
+    // 接受用户输入
+    set_cursor(last_pos1.x, last_pos1.y);
+    RobotType type;
+    while(1)
+    {
+        char choice[100];
+        std::cin >> choice;
+        if(choice[0]=='1'&&choice[1]=='\0')
+        {
+            type = RobotType::male;
+            break;
+        }
+        else if(choice[0]=='2'&&choice[1]=='\0')
+        {
+            type = RobotType::female;
+            break;
+        }
+        clear_line(last_pos1.y);
+        set_cursor(border_x, last_pos1.y);
+        std::cout << '|';
+        set_cursor(0, last_pos1.y);
+        std::cout << "|输入有误，请重新选择工作照：";
+    }
+
+    set_cursor(last_pos2.x, last_pos2.y);
+    std::string name;
+    while(1)
+    {
+        char choice[100];
+        std::cin >> choice;
+        if(strlen(choice) <= 8)
+        {
+            name = choice;
+            break;
+        }
+        clear_line(last_pos2.y);
+        set_cursor(border_x, last_pos2.y);
+        std::cout << '|';
+        set_cursor(0, last_pos2.y);
+        std::cout << "|输入有误，请重新输入昵称：";
+    }
+
+    // 保存存档
+    if(type == RobotType::male)
+        robot = robot1;
+    else
+        robot = robot2;
+    record->card[record_id].valid = true;
+    record->card[record_id].level = 1;
+    record->card[record_id].robot_type = type;
+    record->card[record_id].name = name;
+    record->save();
+}
+
+bool HRM_GUI::welcome()
 {
     // 欢迎界面
-    clear_screen();
     int border_x = 50;
     int border_y = 10;
     std::cout << "+";
@@ -119,8 +257,10 @@ void HRM_GUI::welcome()
         set_cursor(2, 7);
         std::cout << "最高关卡：" << record->card[0].level;
         set_cursor(2, 8);
+        std::cout << "昵称：" << record->card[0].name;
+        set_cursor(2, 9);
         std::cout << "工作照：";
-        robot1->move(6, 10);
+        robot1->move(6, 11);
         robot1->printRobot();
     }
     else
@@ -136,8 +276,10 @@ void HRM_GUI::welcome()
         set_cursor(2 + border_x/3, 7);
         std::cout << "最高关卡：" << record->card[1].level;
         set_cursor(2 + border_x/3, 8);
+        std::cout << "昵称：" << record->card[1].name;
+        set_cursor(2 + border_x/3, 9);
         std::cout << "工作照：";
-        robot1->move(6 + border_x/3, 10);
+        robot1->move(6 + border_x/3, 11);
         robot1->printRobot();
     }
     else
@@ -153,8 +295,10 @@ void HRM_GUI::welcome()
         set_cursor(2 + 2*border_x/3, 7);
         std::cout << "最高关卡：" << record->card[2].level;
         set_cursor(2 + 2*border_x/3, 8);
+        std::cout << "昵称：" << record->card[2].name;
+        set_cursor(2 + 2*border_x/3, 9);
         std::cout << "工作照：";
-        robot1->move(6 + 2*border_x/3, 10);
+        robot1->move(6 + 2*border_x/3, 11);
         robot1->printRobot();
     }
     else
@@ -182,9 +326,9 @@ void HRM_GUI::welcome()
     {
         char choice[100];
         std::cin >> choice;
-        if(choice[0]>='0'&&choice[0]<='3'&&choice[1]=='\0')
+        if(choice[0]>='1'&&choice[0]<='3'&&choice[1]=='\0')
         {
-            card_id = choice[0] - '0';
+            card_id = choice[0] - '0' - 1;
             break;
         }
         clear_line(last_y + 1);
@@ -194,6 +338,7 @@ void HRM_GUI::welcome()
         std::cout << "|输入有误，请重新选择存档：";
     }
     
+    record_id = card_id;
     bool continue_last;
     if(record->card[card_id].valid)
     {
@@ -244,11 +389,16 @@ void HRM_GUI::welcome()
 
     set_cursor(0, new_y + 1);
     if(continue_last)
-        std::cout << "加载存档中...请稍候";
+        {
+            if(card_id == 0) robot = robot1;
+            else if(card_id == 1) robot = robot2;
+            else robot = robot3;
+            std::cout << "加载存档中...请稍候";
+        }
     else
         std::cout << "新建存档中...请稍候";
-    Sleep(100000);
-    clear_screen();
+    Sleep(1000);
+    return continue_last;
 }
 
 void HRM_GUI::set_cursor(int _x, int _y)
@@ -264,6 +414,7 @@ void HRM_GUI::clear_screen()
 {
     // 清屏
     system("cls");
+    reset_cursor();
 }
 
 void HRM_GUI::hide_cursor()
@@ -304,4 +455,9 @@ void HRM_GUI::clear_line(int line) {
     DWORD written;
     FillConsoleOutputCharacter(hConsole, ' ', csbi.dwSize.X, cursorPosition, &written); // 用空格覆盖整行输出
     SetConsoleCursorPosition(hConsole, cursorPosition); // 将光标移动回行的开头
+}
+
+void HRM_GUI::reset_cursor()
+{
+    set_cursor(0, 0);
 }

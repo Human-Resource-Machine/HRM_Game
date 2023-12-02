@@ -20,14 +20,17 @@ public:
     bool cursor_visible;
     Record *record;
     Robot *robot;
+    int record_id;
 
     HRM_GUI(bool _cursor_visible = false);
     ~HRM_GUI();
     void run();
-    void welcome();
+    bool welcome();
     void set_cursor(int _x, int _y);
+    void reset_cursor();
     void clear_screen();
     void hide_cursor();
     coord cursor_now();
     void clear_line(int _y);
+    void new_record();  // 新建存档
 };
