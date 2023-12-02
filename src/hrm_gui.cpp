@@ -98,6 +98,7 @@ void HRM_GUI::welcome()
         std::cout << '|' << std::endl;
     }
     std::cout << '+';
+    int last_y = cursor_now().y;
     for(int i = 0; i < border_x - 1; i++)
     {
         if(i == separator1 || i == separator2)
@@ -162,6 +163,90 @@ void HRM_GUI::welcome()
         std::cout << "暂无存档";
     }
     hide_cursor();
+
+    // 选择存档
+    set_cursor(0, last_y + 2);
+    std::cout << '+';
+    int new_y = cursor_now().y;
+    for(int i = 0; i < border_x - 1; i++)
+    {
+        std::cout << '-';
+    }
+    std::cout << '+';
+    set_cursor(border_x, last_y + 1);
+    std::cout << '|';
+    set_cursor(0, last_y + 1);
+    std::cout << "|请选择存档：";
+    int card_id;
+    while(1)
+    {
+        char choice[100];
+        std::cin >> choice;
+        if(choice[0]>='0'&&choice[0]<='3'&&choice[1]=='\0')
+        {
+            card_id = choice[0] - '0';
+            break;
+        }
+        clear_line(last_y + 1);
+        set_cursor(border_x, last_y + 1);
+        std::cout << '|';
+        set_cursor(0, last_y + 1);
+        std::cout << "|输入有误，请重新选择存档：";
+    }
+    
+    bool continue_last;
+    if(record->card[card_id].valid)
+    {
+        set_cursor(border_x, last_y + 3);
+        std::cout << '|';
+        set_cursor(0, last_y + 4);
+        std::cout << "|( 0 : 继续存档, 1 : 新建存档)";
+        set_cursor(border_x, last_y + 4);
+        std::cout << '|' << std::endl << '+';
+        new_y = cursor_now().y;
+        for(int i = 0; i < border_x; i++)
+        {
+            std::cout << '-';
+        }
+        std::cout << '+';
+        set_cursor(0, last_y + 3);
+        std::cout << "|继续上次的存档还是新建存档？：";
+        while(1)
+        {
+            char choice[100];
+            std::cin >> choice;
+            if(choice[0]>='0'&&choice[0]<='1'&&choice[1]=='\0')
+            {
+                if(choice[0] == '0')
+                {
+                    // 继续存档
+                    continue_last = true;
+                    break;
+                }
+                else
+                {
+                    // 新建存档
+                    continue_last = false;
+                    break;
+                }
+            }
+            clear_line(last_y + 3);
+            set_cursor(border_x, last_y + 3);
+            std::cout << '|';
+            set_cursor(0, last_y + 3);
+            std::cout << "|输入有误，请重新选择继续存档或者新建存档：";
+        }
+    }
+    else
+    {
+        continue_last = false;
+    }
+
+    set_cursor(0, new_y + 1);
+    if(continue_last)
+        std::cout << "加载存档中...请稍候";
+    else
+        std::cout << "新建存档中...请稍候";
     Sleep(100000);
     clear_screen();
 }
@@ -189,4 +274,34 @@ void HRM_GUI::hide_cursor()
     GetConsoleCursorInfo(handle, &cursor_info);
     cursor_info.bVisible = false;
     SetConsoleCursorInfo(handle, &cursor_info);
+}
+
+coord HRM_GUI::cursor_now()
+{
+    HANDLE hConsole = GetStdHandle(STD_OUTPUT_HANDLE);
+    CONSOLE_SCREEN_BUFFER_INFO csbi;
+    int cursorX = 0, cursorY = 0;
+    // 获取光标位置
+    if (GetConsoleScreenBufferInfo(hConsole, &csbi)) {
+        cursorX = csbi.dwCursorPosition.X;
+        cursorY = csbi.dwCursorPosition.Y;
+    }
+    return coord(cursorX, cursorY);
+}
+
+// 清除指定行的输出
+void HRM_GUI::clear_line(int line) {
+    COORD cursorPosition;
+    cursorPosition.X = 0; // 将光标移动到行的开头
+    cursorPosition.Y = line; // 指定要清除的行号
+
+    HANDLE hConsole = GetStdHandle(STD_OUTPUT_HANDLE);
+    SetConsoleCursorPosition(hConsole, cursorPosition); // 将光标移动到指定位置
+
+    CONSOLE_SCREEN_BUFFER_INFO csbi;
+    GetConsoleScreenBufferInfo(hConsole, &csbi);
+
+    DWORD written;
+    FillConsoleOutputCharacter(hConsole, ' ', csbi.dwSize.X, cursorPosition, &written); // 用空格覆盖整行输出
+    SetConsoleCursorPosition(hConsole, cursorPosition); // 将光标移动回行的开头
 }
