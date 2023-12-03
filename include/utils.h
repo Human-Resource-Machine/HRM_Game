@@ -391,7 +391,7 @@ public:
     }
 };
 
-class robot {
+class code_manager {
 public:
     std::vector<int> input_{};
     std::vector<int> output_{};
@@ -447,7 +447,7 @@ public:
     }
 
 
-    ~robot() {
+    ~code_manager() {
         for (auto i: instruction_) { delete i; }
     }
 };
