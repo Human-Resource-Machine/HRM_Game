@@ -15,6 +15,8 @@ void setConsoleFontAndSize(LPCWSTR fontName ,int size = 16) {
 
 HRM_GUI::HRM_GUI(bool _cursor_visible)
 {
+    SetConsoleOutputCP(CP_UTF8);
+    setConsoleFontAndSize(L"KaiTi");
     std::cout << "正在疯狂加载配置文件ing..." << std::endl;
     hide_cursor();
     record = new Record();
@@ -23,6 +25,7 @@ HRM_GUI::HRM_GUI(bool _cursor_visible)
     GetWindowRect(console, &rect);
 
     MoveWindow(console, rect.left, rect.top, 800, 600, TRUE); // 设置窗口大小为 800x600
+    Sleep(1000);
 }
 
 HRM_GUI::~HRM_GUI()
@@ -33,8 +36,6 @@ HRM_GUI::~HRM_GUI()
 
 void HRM_GUI::run()
 {
-    SetConsoleOutputCP(CP_UTF8);
-    setConsoleFontAndSize(L"KaiTi");
     clear_screen();
     // 欢迎界面
     int continue_last = welcome();
