@@ -3,6 +3,7 @@
 #include <string> //字符串类 c++标准库
 #include <sstream> //字符串流 c++标准库
 #include "json.h" //jsoncpp的头文件
+#include "body.h"
 
 using namespace std;
 
@@ -37,7 +38,7 @@ void read(std::vector<int> &input,
     input.clear();
     output.clear();
     instructions.clear();
-    auto root = readJsonFile("level/level1.json");
+    auto root = readJsonFile("../level/level1.json");
     ground = root["ground"].asInt();
     for (const auto &i: root["instructions"]) {
         auto s = i.asString();

@@ -8,5 +8,6 @@ include_directories(${PROJECT_SOURCE_DIR}/include ${PROJECT_SOURCE_DIR}/dist/jso
 aux_source_directory(./src SrcFiles)
 set(EXECUTABLE_OUTPUT_PATH ${PROJECT_SOURCE_DIR}/bin)
 add_executable(game ${SrcFiles}
-        dist/jsoncpp.cpp)
+        dist/jsoncpp.cpp
+        include/body.h)
 target_link_libraries(game PRIVATE gdiplus)
