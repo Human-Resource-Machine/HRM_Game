@@ -399,6 +399,7 @@ public:
     std::vector<InstrSet::instruction *> instruction_{};
     int pc_{};
     int hand_{};
+    int clock{};
 
     void add_instruction(std::string s) {
         if (s == "inbox") {
@@ -428,7 +429,7 @@ public:
 
     void step() {
         instruction_[pc_]->accept(ground_, hand_, input_, output_, pc_);
-
+        clock++;
     }
 
     bool finished() {
