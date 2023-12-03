@@ -140,74 +140,82 @@ license you like.
 #pragma pack()
 
 namespace Json {
-template <typename T> class SecureAllocator {
-public:
-  // Type definitions
-  using value_type = T;
-  using pointer = T*;
-  using const_pointer = const T*;
-  using reference = T&;
-  using const_reference = const T&;
-  using size_type = std::size_t;
-  using difference_type = std::ptrdiff_t;
+    template<typename T>
+    class SecureAllocator {
+    public:
+        // Type definitions
+        using value_type = T;
+        using pointer = T *;
+        using const_pointer = const T *;
+        using reference = T &;
+        using const_reference = const T &;
+        using size_type = std::size_t;
+        using difference_type = std::ptrdiff_t;
 
-  /**
-   * Allocate memory for N items using the standard allocator.
-   */
-  pointer allocate(size_type n) {
-    // allocate using "global operator new"
-    return static_cast<pointer>(::operator new(n * sizeof(T)));
-  }
+        /**
+         * Allocate memory for N items using the standard allocator.
+         */
+        pointer allocate(size_type n) {
+            // allocate using "global operator new"
+            return static_cast<pointer>(::operator new(n * sizeof(T)));
+        }
 
-  /**
-   * Release memory which was allocated for N items at pointer P.
-   *
-   * The memory block is filled with zeroes before being released.
-   */
-  void deallocate(pointer p, size_type n) {
-    // memset_s is used because memset may be optimized away by the compiler
-    memset_s(p, n * sizeof(T), 0, n * sizeof(T));
-    // free using "global operator delete"
-    ::operator delete(p);
-  }
+        /**
+         * Release memory which was allocated for N items at pointer P.
+         *
+         * The memory block is filled with zeroes before being released.
+         */
+        void deallocate(pointer p, size_type n) {
+            // memset_s is used because memset may be optimized away by the compiler
+            memset_s(p, n * sizeof(T), 0, n * sizeof(T));
+            // free using "global operator delete"
+            ::operator delete(p);
+        }
 
-  /**
-   * Construct an item in-place at pointer P.
-   */
-  template <typename... Args> void construct(pointer p, Args&&... args) {
-    // construct using "placement new" and "perfect forwarding"
-    ::new (static_cast<void*>(p)) T(std::forward<Args>(args)...);
-  }
+        /**
+         * Construct an item in-place at pointer P.
+         */
+        template<typename... Args>
+        void construct(pointer p, Args &&... args) {
+            // construct using "placement new" and "perfect forwarding"
+            ::new(static_cast<void *>(p)) T(std::forward<Args>(args)...);
+        }
 
-  size_type max_size() const { return size_t(-1) / sizeof(T); }
+        size_type max_size() const { return size_t(-1) / sizeof(T); }
 
-  pointer address(reference x) const { return std::addressof(x); }
+        pointer address(reference x) const { return std::addressof(x); }
 
-  const_pointer address(const_reference x) const { return std::addressof(x); }
+        const_pointer address(const_reference x) const { return std::addressof(x); }
 
-  /**
-   * Destroy an item in-place at pointer P.
-   */
-  void destroy(pointer p) {
-    // destroy using "explicit destructor"
-    p->~T();
-  }
+        /**
+         * Destroy an item in-place at pointer P.
+         */
+        void destroy(pointer p) {
+            // destroy using "explicit destructor"
+            p->~T();
+        }
 
-  // Boilerplate
-  SecureAllocator() {}
-  template <typename U> SecureAllocator(const SecureAllocator<U>&) {}
-  template <typename U> struct rebind { using other = SecureAllocator<U>; };
-};
+        // Boilerplate
+        SecureAllocator() {}
 
-template <typename T, typename U>
-bool operator==(const SecureAllocator<T>&, const SecureAllocator<U>&) {
-  return true;
-}
+        template<typename U>
+        SecureAllocator(const SecureAllocator<U> &) {}
 
-template <typename T, typename U>
-bool operator!=(const SecureAllocator<T>&, const SecureAllocator<U>&) {
-  return false;
-}
+        template<typename U>
+        struct rebind {
+            using other = SecureAllocator<U>;
+        };
+    };
+
+    template<typename T, typename U>
+    bool operator==(const SecureAllocator<T> &, const SecureAllocator<U> &) {
+        return true;
+    }
+
+    template<typename T, typename U>
+    bool operator!=(const SecureAllocator<T> &, const SecureAllocator<U> &) {
+        return false;
+    }
 
 } // namespace Json
 
@@ -235,6 +243,7 @@ bool operator!=(const SecureAllocator<T>&, const SecureAllocator<U>&) {
 
 #ifndef JSON_CONFIG_H_INCLUDED
 #define JSON_CONFIG_H_INCLUDED
+
 #include <cstddef>
 #include <cstdint>
 #include <istream>
@@ -315,7 +324,7 @@ extern JSON_API int msvc_pre1900_c99_snprintf(char* outBuf, size_t size,
 #define JSONCPP_DEPRECATED(message) __attribute__((__deprecated__))
 #endif                  // GNUC version
 #elif defined(_MSC_VER) // MSVC (after clang because clang on Windows emulates
-                        // MSVC)
+// MSVC)
 #define JSONCPP_DEPRECATED(message) __declspec(deprecated(message))
 #endif // __clang__ || __GNUC__ || _MSC_VER
 
@@ -335,39 +344,39 @@ extern JSON_API int msvc_pre1900_c99_snprintf(char* outBuf, size_t size,
 #endif // if !defined(JSON_IS_AMALGAMATION)
 
 namespace Json {
-using Int = int;
-using UInt = unsigned int;
+    using Int = int;
+    using UInt = unsigned int;
 #if defined(JSON_NO_INT64)
-using LargestInt = int;
-using LargestUInt = unsigned int;
+    using LargestInt = int;
+    using LargestUInt = unsigned int;
 #undef JSON_HAS_INT64
 #else                 // if defined(JSON_NO_INT64)
 // For Microsoft Visual use specific types as long long is not supported
 #if defined(_MSC_VER) // Microsoft Visual Studio
-using Int64 = __int64;
-using UInt64 = unsigned __int64;
+    using Int64 = __int64;
+    using UInt64 = unsigned __int64;
 #else                 // if defined(_MSC_VER) // Other platforms, use long long
-using Int64 = int64_t;
-using UInt64 = uint64_t;
+    using Int64 = int64_t;
+    using UInt64 = uint64_t;
 #endif                // if defined(_MSC_VER)
-using LargestInt = Int64;
-using LargestUInt = UInt64;
+    using LargestInt = Int64;
+    using LargestUInt = UInt64;
 #define JSON_HAS_INT64
 #endif // if defined(JSON_NO_INT64)
 
-template <typename T>
-using Allocator =
-    typename std::conditional<JSONCPP_USING_SECURE_MEMORY, SecureAllocator<T>,
-                              std::allocator<T>>::type;
-using String = std::basic_string<char, std::char_traits<char>, Allocator<char>>;
-using IStringStream =
-    std::basic_istringstream<String::value_type, String::traits_type,
-                             String::allocator_type>;
-using OStringStream =
-    std::basic_ostringstream<String::value_type, String::traits_type,
-                             String::allocator_type>;
-using IStream = std::istream;
-using OStream = std::ostream;
+    template<typename T>
+    using Allocator =
+            typename std::conditional<JSONCPP_USING_SECURE_MEMORY, SecureAllocator<T>,
+                    std::allocator<T>>::type;
+    using String = std::basic_string<char, std::char_traits<char>, Allocator<char>>;
+    using IStringStream =
+            std::basic_istringstream<String::value_type, String::traits_type,
+                    String::allocator_type>;
+    using OStringStream =
+            std::basic_ostringstream<String::value_type, String::traits_type,
+                    String::allocator_type>;
+    using IStream = std::istream;
+    using OStream = std::ostream;
 } // namespace Json
 
 // Legacy names (formerly macros).
@@ -407,30 +416,44 @@ using JSONCPP_OSTREAM = Json::OStream;
 namespace Json {
 
 // writer.h
-class StreamWriter;
-class StreamWriterBuilder;
-class Writer;
-class FastWriter;
-class StyledWriter;
-class StyledStreamWriter;
+    class StreamWriter;
+
+    class StreamWriterBuilder;
+
+    class Writer;
+
+    class FastWriter;
+
+    class StyledWriter;
+
+    class StyledStreamWriter;
 
 // reader.h
-class Reader;
-class CharReader;
-class CharReaderBuilder;
+    class Reader;
+
+    class CharReader;
+
+    class CharReaderBuilder;
 
 // json_features.h
-class Features;
+    class Features;
 
 // value.h
-using ArrayIndex = unsigned int;
-class StaticString;
-class Path;
-class PathArgument;
-class Value;
-class ValueIteratorBase;
-class ValueIterator;
-class ValueConstIterator;
+    using ArrayIndex = unsigned int;
+
+    class StaticString;
+
+    class Path;
+
+    class PathArgument;
+
+    class Value;
+
+    class ValueIteratorBase;
+
+    class ValueIterator;
+
+    class ValueConstIterator;
 
 } // namespace Json
 
