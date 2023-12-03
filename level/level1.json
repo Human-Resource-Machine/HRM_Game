@@ -1,0 +1,15 @@
+{
+  "input": [
+    1,
+    2
+  ],
+  "output": [
+    1,
+    2
+  ],
+  "ground": 0,
+  "instructions": [
+    "inbox",
+    "outbox"
+  ]
+}
