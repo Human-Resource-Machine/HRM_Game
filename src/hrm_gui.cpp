@@ -61,7 +61,7 @@ void HRM_GUI::new_record()
         std::cout << "-";
     }
     std::cout << "+" << std::endl << '|';
-    set_cursor(border_x/2 - 12, 1);
+    set_cursor(border_x/2 - 4, 1);
     std::cout << "创建新角色";
     set_cursor(border_x, 1);
     std::cout << '|' << std::endl << '+';
@@ -124,6 +124,12 @@ void HRM_GUI::new_record()
     Robot *robot2 = new Robot(RobotType::female);
     set_cursor(border_x/4, 5);
     std::cout << "1. ";
+    robot1->move(border_x/4 - 2, 7);
+    robot1->printRobot();
+    set_cursor(border_x/4*3, 5);
+    std::cout << "2. ";
+    robot2->move(border_x/4*3 - 2, 7);
+    robot2->printRobot();
 
 
     // 接受用户输入
@@ -201,7 +207,7 @@ bool HRM_GUI::welcome()
     }
     std::cout << '+' << std::endl << '|';
     set_cursor(border_x/2 - 8 ,3);
-    std::cout << "请选择您的工作证:" << std::endl;
+    std::cout << "请选择您的工作证" << std::endl;
     set_cursor(border_x, 3);
     std::cout << '|' << std::endl << '+';
 
