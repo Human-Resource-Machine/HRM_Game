@@ -3,6 +3,7 @@
 #include <windows.h>
 #include "utils.h"
 
+#include "debug.h"
 
 void setConsoleFontAndSize(LPCWSTR fontName, int size = 16) {
     CONSOLE_FONT_INFOEX fontInfo;
@@ -31,6 +32,7 @@ HRM_GUI::HRM_GUI(bool _cursor_visible) {
 HRM_GUI::~HRM_GUI() {
     std::cout << "正在退出游戏..." << std::endl;
     delete record;
+    delete robot;
 }
 
 void HRM_GUI::run() {
@@ -45,6 +47,7 @@ void HRM_GUI::run() {
         record->save();
         new_record();
     }
+    std::cin.get();
 
 
     //=============
@@ -114,8 +117,23 @@ void HRM_GUI::run() {
     }
     // TODO: 检查指令是否合法
     // 运行
+    Curtain c{};
+
+    clear_screen();
+    c.set_state(r.input_, r.output_, r.ground_, r.instruction_, r.pc_);
+    c.print();
+    cin.get();
+    clear_screen();
+    robot->print();
+    cin.get();
     while (!r.finished()) {
         r.step();
+
+        clear_screen();
+        c.set_state(r.input_, r.output_, r.ground_, r.instruction_, r.pc_);
+        c.print();
+        cin.get();
+        clear_screen();
     }
 }
 
@@ -183,11 +201,11 @@ void HRM_GUI::new_record() {
     set_cursor(border_x / 4, 5);
     std::cout << "1. ";
     robot1->move(border_x / 4 - 2, 7);
-    robot1->printRobot();
+    robot1->print();
     set_cursor(border_x / 4 * 3, 5);
     std::cout << "2. ";
     robot2->move(border_x / 4 * 3 - 2, 7);
-    robot2->printRobot();
+    robot2->print();
 
 
     // 接受用户输入
@@ -311,7 +329,7 @@ bool HRM_GUI::welcome() {
         set_cursor(2, 9);
         std::cout << "工作照：";
         robot1->move(6, 11);
-        robot1->printRobot();
+        robot1->print();
     } else {
         set_cursor(5, 7);
         std::cout << "暂无存档";
@@ -319,15 +337,15 @@ bool HRM_GUI::welcome() {
     set_cursor(5 + border_x / 3, 6);
     std::cout << " 存档二";
     if (record->card[1].valid) {
-        robot1 = new Robot(record->card[1].robot_type);
+        robot2 = new Robot(record->card[1].robot_type);
         set_cursor(2 + border_x / 3, 7);
         std::cout << "最高关卡：" << record->card[1].level;
         set_cursor(2 + border_x / 3, 8);
         std::cout << "昵称：" << record->card[1].name;
         set_cursor(2 + border_x / 3, 9);
         std::cout << "工作照：";
-        robot1->move(6 + border_x / 3, 11);
-        robot1->printRobot();
+        robot2->move(6 + border_x / 3, 11);
+        robot2->print();
     } else {
         set_cursor(5 + border_x / 3, 7);
         std::cout << "暂无存档";
@@ -335,15 +353,15 @@ bool HRM_GUI::welcome() {
     set_cursor(6 + border_x / 3 * 2, 6);
     std::cout << " 存档三";
     if (record->card[2].valid) {
-        robot1 = new Robot(record->card[2].robot_type);
+        robot3 = new Robot(record->card[2].robot_type);
         set_cursor(2 + 2 * border_x / 3, 7);
         std::cout << "最高关卡：" << record->card[2].level;
         set_cursor(2 + 2 * border_x / 3, 8);
         std::cout << "昵称：" << record->card[2].name;
         set_cursor(2 + 2 * border_x / 3, 9);
         std::cout << "工作照：";
-        robot1->move(6 + 2 * border_x / 3, 11);
-        robot1->printRobot();
+        robot3->move(6 + 2 * border_x / 3, 11);
+        robot3->print();
     } else {
         set_cursor(6 + border_x / 3 * 2, 7);
         std::cout << "暂无存档";

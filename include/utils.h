@@ -2,6 +2,7 @@
 
 #include "json.h"
 #include <bits/stdc++.h>
+#include"hrm_gui.h"
 
 namespace fs = std::filesystem;
 
@@ -331,14 +332,12 @@ public:
 
 };
 
-class Robot {
+class Object {
 public:
     int pos_x;
     int pos_y;
-    RobotType type;
 
-    Robot(RobotType _type, int _x = 0, int _y = 0) {
-        type = _type;
+    Object(int _x = 0, int _y = 0) {
         pos_x = _x;
         pos_y = _y;
     }
@@ -356,7 +355,16 @@ public:
         SetConsoleCursorPosition(hOut, pos);
     }
 
-    void printRobot() {
+    virtual void print() = 0;
+};
+
+class Robot : public Object {
+public:
+    RobotType type;
+
+    explicit Robot(RobotType _type, int _x = 0, int _y = 0) : Object(_x, _y), type(_type) {}
+
+    void print() override {
         HANDLE hConsole = GetStdHandle(STD_OUTPUT_HANDLE);
         CONSOLE_SCREEN_BUFFER_INFO csbi;
         int cursorX = 0, cursorY = 0;
@@ -388,6 +396,149 @@ public:
         }
         // 将光标移动回原来的位置
         set_cursor(cursorX, cursorY);
+    }
+};
+
+class Box : public Object {
+public:
+
+    int num_;
+    bool enable;
+
+    explicit Box(int _x = 0, int _y = 0, int num = 0) : Object(_x, _y), num_(num) {}
+
+
+    void print() override {
+        HANDLE hConsole = GetStdHandle(STD_OUTPUT_HANDLE);
+        CONSOLE_SCREEN_BUFFER_INFO csbi;
+        int cursorX = 0, cursorY = 0;
+        // 获取光标位置
+        if (GetConsoleScreenBufferInfo(hConsole, &csbi)) {
+            cursorX = csbi.dwCursorPosition.X;
+            cursorY = csbi.dwCursorPosition.Y;
+        }
+        {
+            // 将光标移动到指定位置并打印机器人
+            set_cursor(pos_x, pos_y);
+            std::cout << "+---+";
+            set_cursor(pos_x, pos_y + 1);
+            enable ? std::cout << '|' << std::setw(3) << std::setfill(' ') << num_ << '|' : std::cout << '|' << "   "
+                                                                                                      << '|';
+            set_cursor(pos_x, pos_y + 2);
+            std::cout << "+---+";
+        }
+        // 将光标移动回原来的位置
+        set_cursor(cursorX, cursorY);
+    }
+};
+
+class InstructionBox : public Object {
+public:
+
+    InstrSet::InstrType type_;
+    bool pc_ = false;
+    int x_ = 0;
+
+    explicit InstructionBox(int _x, int _y, InstrSet::InstrType type, bool pc, int x) : Object(_x, _y),
+                                                                                        type_(type), pc_(pc),
+                                                                                        x_(x) {}
+
+
+    void print() override {
+        HANDLE hConsole = GetStdHandle(STD_OUTPUT_HANDLE);
+        CONSOLE_SCREEN_BUFFER_INFO csbi;
+        int cursorX = 0, cursorY = 0;
+        // 获取光标位置
+        if (GetConsoleScreenBufferInfo(hConsole, &csbi)) {
+            cursorX = csbi.dwCursorPosition.X;
+            cursorY = csbi.dwCursorPosition.Y;
+        }
+        {
+            // 将光标移动到指定位置并打印机器人
+            set_cursor(pos_x, pos_y);
+            std::cout << (pc_ ? '*' : ' ');
+            if (type_ == InstrSet::INBOX)
+                std::cout << "inbox";
+            else if (type_ == InstrSet::OUTBOX)
+                std::cout << "outbox";
+            else if (type_ == InstrSet::JUMP)
+                std::cout << "jump" << ' ' << x_;
+            else if (type_ == InstrSet::JUMPIFZERO)
+                std::cout << "jumpifzero" << ' ' << x_;
+            else if (type_ == InstrSet::ADD)
+                std::cout << "add" << ' ' << x_;
+            else if (type_ == InstrSet::SUB)
+                std::cout << "sub" << ' ' << x_;
+            else if (type_ == InstrSet::COPYFROM)
+                std::cout << "copyfrom" << ' ' << x_;
+            else if (type_ == InstrSet::COPYTO)
+                std::cout << "copyto" << ' ' << x_;
+        }
+
+        // 将光标移动回原来的位置
+        set_cursor(cursorX, cursorY);
+    }
+};
+
+class Curtain : public Object {
+public:
+    std::vector<Box> input_box{Box{0, 0},
+                               Box{0, 3},
+                               Box{0, 6},
+                               Box{0, 9},
+                               Box{0, 12},
+                               Box{0, 15},
+                               Box{0, 18},
+                               Box{0, 21}};
+    std::vector<Box> output_box{Box{20, 0},
+                                Box{20, 3},
+                                Box{20, 6},
+                                Box{20, 9},
+                                Box{20, 12},
+                                Box{20, 15},
+                                Box{20, 18},
+                                Box{20, 21}};
+    std::vector<Box> ground_box{};
+    std::vector<InstructionBox> instruction_box{};
+
+    void set_state(std::vector<int> &input, std::vector<int> &output, std::vector<int> &ground,
+                   std::vector<InstrSet::instruction *> instruction, int pc) {
+        for (auto &box: input_box) {
+            box.enable = false;
+        }
+        for (auto &box: output_box) {
+            box.enable = false;
+        }
+        for (int i = 0; i < input.size(); i++) {
+            input_box[i].enable = true;
+            input_box[i].num_ = input[i];
+        }
+        for (int i = 0; i < output.size(); i++) {
+            output_box[i].enable = true;
+            output_box[i].num_ = output[i];
+        }
+        for (int i = 0; i < ground.size(); i++) {
+            ground_box.push_back(Box{10, 4 * i, ground[i]});
+        }
+        for (int i = 0; i < instruction.size(); i++) {
+            instruction_box.push_back(InstructionBox(30, i, instruction[i]->get_type(), i == pc, instruction[i]->x_));
+        }
+    }
+
+    void print() override {
+        for (auto &box: input_box) {
+            box.print();
+        }
+        for (auto &box: output_box) {
+            box.print();
+        }
+        for (auto &box: ground_box) {
+            box.print();
+        }
+        for (auto &box: instruction_box) {
+            box.print();
+        }
+
     }
 };
 
