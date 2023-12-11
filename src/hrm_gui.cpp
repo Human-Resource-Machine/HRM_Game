@@ -117,24 +117,117 @@ void HRM_GUI::run() {
     }
     // TODO: 检查指令是否合法
     // 运行
+    clear_screen();
+    robot->ingame = true;
+
     Curtain c{};
-
-    clear_screen();
-    c.set_state(r.input_, r.output_, r.ground_, r.instruction_, r.pc_);
-    c.print();
-    cin.get();
-    clear_screen();
-    robot->print();
-    cin.get();
-    while (!r.finished()) {
-        r.step();
-
+    robot->move(6, 11);
+    {
+        // 画机器人
         clear_screen();
+        robot->print();
+    }
+    {
         c.set_state(r.input_, r.output_, r.ground_, r.instruction_, r.pc_);
         c.print();
         cin.get();
         clear_screen();
     }
+    {
+        // 移动机器人
+        int x = robot->pos_x;
+        int y = robot->pos_y;
+        int target_x;
+        int target_y;
+        if (r.instruction_[r.pc_]->get_type() == InstrSet::INBOX) {
+            target_x = 6;
+            target_y = 3;
+
+        } else if (r.instruction_[r.pc_]->get_type() == InstrSet::OUTBOX) {
+            target_x = 74;
+            target_y = 3;
+        }
+
+        int dir_x = (target_x - x == 0) ? 0 : (target_x - x > 0) ? 1 : -1;
+        int dir_y = (target_y - y == 0) ? 0 : (target_y - y > 0) ? 1 : -1;
+        while (target_x != x or target_y != y) {
+            x = (target_x == x) ? x : x + dir_x;
+            y = (target_y == y) ? y : y + dir_y;
+            robot->move(x, y);
+            clear_screen();
+            robot->print();
+            c.print();
+            Sleep(5);
+        }
+
+        if (r.instruction_[r.pc_]->get_type() == InstrSet::INBOX) {
+            robot->enable = true;
+        }
+    }
+
+    while (!r.finished()) {
+        // 执行一步
+        r.step();
+        {
+            // 获得执行完后机器人手里的数、
+            robot->hand = r.hand_;
+        }
+        {
+            // 画机器人
+            clear_screen();
+            robot->print();
+        }
+        {
+            c.set_state(r.input_, r.output_, r.ground_, r.instruction_, r.pc_);
+            c.print();
+            cin.get();
+            clear_screen();
+        }
+        {
+            if (r.finished()) {
+                continue;
+            }
+            // 移动机器人
+            int x = robot->pos_x;
+            int y = robot->pos_y;
+            int target_x;
+            int target_y;
+            if (r.instruction_[r.pc_]->get_type() == InstrSet::INBOX) {
+                target_x = 6;
+                target_y = 3;
+
+            } else if (r.instruction_[r.pc_]->get_type() == InstrSet::OUTBOX) {
+                target_x = 74;
+                target_y = 3;
+            }
+
+            int dir_x = (target_x - x == 0) ? 0 : (target_x - x > 0) ? 1 : -1;
+            int dir_y = (target_y - y == 0) ? 0 : (target_y - y > 0) ? 1 : -1;
+            while (target_x != x or target_y != y) {
+                x = (target_x == x) ? x : x + dir_x;
+                y = (target_y == y) ? y : y + dir_y;
+                robot->move(x, y);
+                clear_screen();
+                robot->print();
+                c.print();
+                Sleep(5);
+            }
+
+            if (r.instruction_[r.pc_]->get_type() == InstrSet::INBOX) {
+                robot->enable = true;
+            }
+        }
+    }
+    clear_screen();
+
+    if (r.success(output)) {
+        cout << "success";
+    } else {
+        cout << "fail";
+    }
+    cin.get();
+
+
 }
 
 void HRM_GUI::new_record() {

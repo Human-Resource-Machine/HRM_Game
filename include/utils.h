@@ -361,6 +361,9 @@ public:
 class Robot : public Object {
 public:
     RobotType type;
+    int hand;
+    bool ingame = false;
+    bool enable = false;
 
     explicit Robot(RobotType _type, int _x = 0, int _y = 0) : Object(_x, _y), type(_type) {}
 
@@ -375,6 +378,19 @@ public:
         }
         if (type == RobotType::female) {
             // 将光标移动到指定位置并打印机器人
+
+
+            if (ingame) {
+                set_cursor(pos_x, pos_y - 3);
+                std::cout << "+---+";
+                set_cursor(pos_x, pos_y - 2);
+                enable ? std::cout << '|' << std::setw(3) << std::setfill(' ') << hand << '|' : std::cout << '|'
+                                                                                                          << "   "
+                                                                                                          << '|';
+                set_cursor(pos_x, pos_y - 1);
+                std::cout << "+---+";
+            }
+
             set_cursor(pos_x, pos_y);
             std::cout << "@___@";
             set_cursor(pos_x, pos_y + 1);
@@ -385,6 +401,18 @@ public:
             std::cout << " | | ";
         } else {
             // 将光标移动到指定位置并打印机器人
+
+            if (ingame) {
+                set_cursor(pos_x, pos_y - 3);
+                std::cout << "+---+";
+                set_cursor(pos_x, pos_y - 2);
+                enable ? std::cout << '|' << std::setw(3) << std::setfill(' ') << hand << '|' : std::cout << '|'
+                                                                                                          << "   "
+                                                                                                          << '|';
+                set_cursor(pos_x, pos_y - 1);
+                std::cout << "+---+";
+            }
+
             set_cursor(pos_x, pos_y);
             std::cout << "__!__";
             set_cursor(pos_x, pos_y + 1);
@@ -490,14 +518,14 @@ public:
                                Box{0, 15},
                                Box{0, 18},
                                Box{0, 21}};
-    std::vector<Box> output_box{Box{20, 0},
-                                Box{20, 3},
-                                Box{20, 6},
-                                Box{20, 9},
-                                Box{20, 12},
-                                Box{20, 15},
-                                Box{20, 18},
-                                Box{20, 21}};
+    std::vector<Box> output_box{Box{80, 0},
+                                Box{80, 3},
+                                Box{80, 6},
+                                Box{80, 9},
+                                Box{80, 12},
+                                Box{80, 15},
+                                Box{80, 18},
+                                Box{80, 21}};
     std::vector<Box> ground_box{};
     std::vector<InstructionBox> instruction_box{};
 
@@ -515,13 +543,13 @@ public:
         }
         for (int i = 0; i < output.size(); i++) {
             output_box[i].enable = true;
-            output_box[i].num_ = output[i];
+            output_box[i].num_ = output[output.size() - 1 - i];
         }
         for (int i = 0; i < ground.size(); i++) {
-            ground_box.push_back(Box{10, 4 * i, ground[i]});
+            ground_box.push_back(Box{50, 4 * i, ground[i]});
         }
         for (int i = 0; i < instruction.size(); i++) {
-            instruction_box.push_back(InstructionBox(30, i, instruction[i]->get_type(), i == pc, instruction[i]->x_));
+            instruction_box.push_back(InstructionBox(100, i, instruction[i]->get_type(), i == pc, instruction[i]->x_));
         }
     }
 
