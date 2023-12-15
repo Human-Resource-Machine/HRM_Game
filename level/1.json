@@ -11,5 +11,6 @@
   "instructions": [
     "inbox",
     "outbox"
-  ]
+  ],
+  "description": "让机器人取出输入序列上的每个积木放入输出序列中 \n输入序列：1, 2 \n目标输出序列：1, 2 \n可用空地数：0 \n可用指令集：inbox,outbox"
 }

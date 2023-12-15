@@ -3,6 +3,7 @@
 #include <windows.h>
 #include "utils.h"
 
+
 #include "debug.h"
 
 void setConsoleFontAndSize(LPCWSTR fontName, int size = 16) {
@@ -49,13 +50,77 @@ void HRM_GUI::run() {
     }
     std::cin.get();
 
-    std::cout << "choose a level: " << std::endl;
-    int level=2;
-    std::cin >> level;
-    std::cin.get();
+
+    std::vector<std::string> config{};
+    {
+        for (auto &i: std::filesystem::directory_iterator("../level/")) {
+            config.push_back(i.path().string().substr(9));
+            config.back() = config.back().substr(0, config.back().size() - 5);
+        }
+    }
+    std::sort(config.begin(), config.end());
+
+
+    int len = std::max(32, int(6 * config.size()));
+
+    {
+        std::cout << '+';
+        for (int i = 0; i < len; ++i) {
+            std::cout << '-';
+        }
+        std::cout << '+' << std::endl;
+    }
+
+
+    std::cout << "|总关卡数 " << config.size() << std::endl;
+    std::cout << '|' << std::endl;
+    std::cout << "|关卡信息" << std::endl;
+    std::cout << "|绿色表示您已通过的关卡" << std::endl;
+    std::cout << "|红色表示您可选择但尚未通过的关卡" << std::endl;
+    std::cout << "|灰色表示尚未解锁的关卡" << std::endl;
+#define RED     "\033[31m"      /* Red */
+#define GREEN   "\033[32m"      /* Green */
+#define GRAY    "\033[2m"      /* Gray */
+#define WHITE  "\033[0m"
+    std::cout << '|';
+    for (int i = 0; i < config.size(); ++i) {
+        if (config[i] < std::to_string(record->card[record_id].level)) {
+            std::cout << GREEN << '[' << config[i] << ']' << WHITE;
+        } else if (config[i] == std::to_string(record->card[record_id].level)) {
+            std::cout << RED << '[' << config[i] << ']' << WHITE;
+        } else {
+            std::cout << WHITE << GRAY << '[' << config[i] << ']' << WHITE;
+        }
+        if (i < config.size() - 1) {
+            std::cout << "-->";
+        }
+    }
+    std::cout << std::endl;
+    {
+        std::cout << '+';
+        for (int i = 0; i < len; ++i) {
+            std::cout << '-';
+        }
+        std::cout << '+' << std::endl;
+    }
+
+    for (int i = 1; i <= 7; ++i) {
+        set_cursor(len + 1, i);
+        std::cout << '|';
+
+    }
+
+    set_cursor(0, 9);
+
+    std::string level_;
+    do {
+        do {
+            std::cout << "请输入本局您希望进行的关卡" << std::endl;
+            std::getline(std::cin, level_);
+        } while (level_ != std::to_string(atoi(level_.c_str())));
+    } while (std::find(config.begin(), config.end(), level_) == config.end());
     clear_screen();
-
-
+    int level = atoi(level_.c_str());
 
     //=============
 
@@ -82,7 +147,7 @@ void HRM_GUI::run() {
     };
 
     auto read = [&readJsonFile](int level, std::vector<int> &input, std::vector<int> &output, int &ground,
-                                std::vector<std::string> &instructions) -> void {
+                                std::vector<std::string> &instructions) -> std::string {
         using std::vector;
         using std::string;
         input.clear();
@@ -102,6 +167,7 @@ void HRM_GUI::run() {
             auto s = i.asInt();
             output.push_back(s);
         }
+        return root["description"].asString();
     };
     //=============
 
@@ -111,18 +177,51 @@ void HRM_GUI::run() {
     int ground;
     std::vector<std::string> available_instructions{};
     // 读入输入输出、地面的大小、可用的指令
-    read(level, input, output, ground, available_instructions);
+    std::string description = read(level, input, output, ground, available_instructions);
+    // 要求
+    std::cout << description << std::endl << std::endl;
+    // 输入方式
 
-    // 读入编写的指令
-    std::cout << "input:" << std::endl;
-    std::string s;
+
+    std::string op;
+    do {
+        std::cout << "请输入您希望输入指令的方式\n1.命令行输入\n2.指令输入" << std::endl;
+        getline(std::cin, op);
+    } while (op != "1" and op != "2");
+
     code_manager r;
-    r.input_ = input;
-    r.ground_ = std::vector<int>(ground, 0);
-    while (getline(std::cin, s)) {
-        if (s == "") break;
-        r.add_instruction(s);
+    if (op == "1") {
+        // 读入编写的指令
+        std::cout << "空行结束指令输入" << std::endl;
+        std::string s;
+        r.input_ = input;
+        r.ground_ = std::vector<int>(ground, 0);
+        while (getline(std::cin, s)) {
+            if (s == "") break;
+            r.add_instruction(s);
+        }
+    } else if (op == "2") {
+        std::cout << "请完整输入您存储文件的相对路径/绝对路径" << std::endl;
+        std::string path;
+        std::getline(std::cin, path);
+        std::ifstream fin(path);
+        std::string s;
+        r.input_ = input;
+        r.ground_ = std::vector<int>(ground, 0);
+        while (getline(fin, s)) {
+            if (s == "") break;
+            r.add_instruction(s);
+        }
+        fin.close();
     }
+
+
+
+
+
+
+
+
     // TODO: 检查指令是否合法
     // 运行
     clear_screen();
@@ -139,7 +238,7 @@ void HRM_GUI::run() {
         {
             c.set_state(r.input_, r.output_, r.ground_, r.instruction_, r.pc_);
             c.print();
-            cin.get();
+            std::cin.get();
             clear_screen();
         }
         {
@@ -192,7 +291,7 @@ void HRM_GUI::run() {
             {
                 c.set_state(r.input_, r.output_, r.ground_, r.instruction_, r.pc_);
                 c.print();
-                cin.get();
+                std::cin.get();
                 clear_screen();
             }
             {
@@ -240,11 +339,11 @@ void HRM_GUI::run() {
     clear_screen();
 
     if (r.success(output)) {
-        cout << "success";
+        std::cout << "success";
     } else {
-        cout << "fail";
+        std::cout << "fail";
     }
-    cin.get();
+    std::cin.get();
 
 
 }

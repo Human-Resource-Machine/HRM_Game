@@ -22,7 +22,8 @@ namespace InstrSet {
         ADD,
         SUB,
         JUMP,
-        JUMPIFZERO
+        JUMPIFZERO,
+        UNKNOWN
     };
 
 
@@ -262,6 +263,31 @@ namespace InstrSet {
         }
     };
 
+    class unknown : public instruction {
+    public:
+
+
+        void print() const override {
+            std::cout << "unknown" << std::endl;
+        }
+
+        [[nodiscard]] std::string to_string() const override {
+
+            return std::string("unknown");
+        }
+
+        void accept(std::vector<int> &ground,
+                    int &hand,
+                    std::vector<int> &input,
+                    std::vector<int> &output,
+                    int &pc) override {
+
+        }
+
+        InstrSet::InstrType get_type() const override {
+            return InstrSet::UNKNOWN;
+        }
+    };
 
 }
 
@@ -482,7 +508,6 @@ public:
             cursorY = csbi.dwCursorPosition.Y;
         }
         {
-            // 将光标移动到指定位置并打印机器人
             set_cursor(pos_x, pos_y);
             std::cout << (pc_ ? '*' : ' ');
             if (type_ == InstrSet::INBOX)
@@ -501,6 +526,8 @@ public:
                 std::cout << "copyfrom" << ' ' << x_;
             else if (type_ == InstrSet::COPYTO)
                 std::cout << "copyto" << ' ' << x_;
+            else if (type_ == InstrSet::UNKNOWN)
+                std::cout << "unknown";
         }
 
         // 将光标移动回原来的位置
@@ -586,8 +613,24 @@ public:
         } else {
             std::istringstream instr(s);
             std::string op;
-            int x;
-            instr >> op >> x;
+            std::string x_;
+            int x = 0;
+
+            instr >> op;
+            std::getline(instr, x_);
+
+            x_.erase(0, x_.find_first_not_of(" "));
+            x_.erase(x_.find_last_not_of(" ") + 1);
+
+            if (x_ == std::to_string(atoi(x_.c_str()))) {
+
+                x = atoi(x_.c_str());
+
+            } else {
+
+                instruction_.push_back(new InstrSet::unknown());
+                return;
+            }
             if (op == "add") {
                 instruction_.push_back(new InstrSet::add(x));
             } else if (op == "sub") {
