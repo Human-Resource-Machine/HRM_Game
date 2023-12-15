@@ -510,22 +510,20 @@ public:
 
 class Curtain : public Object {
 public:
-    std::vector<Box> input_box{Box{0, 0},
-                               Box{0, 3},
-                               Box{0, 6},
-                               Box{0, 9},
-                               Box{0, 12},
-                               Box{0, 15},
-                               Box{0, 18},
-                               Box{0, 21}};
-    std::vector<Box> output_box{Box{80, 0},
-                                Box{80, 3},
-                                Box{80, 6},
-                                Box{80, 9},
-                                Box{80, 12},
-                                Box{80, 15},
-                                Box{80, 18},
-                                Box{80, 21}};
+    std::vector<Box> input_box{Box{0, 6 + 0},
+                               Box{0, 6 + 3},
+                               Box{0, 6 + 6},
+                               Box{0, 6 + 9},
+                               Box{0, 6 + 12},
+                               Box{0, 6 + 15},
+                               Box{0, 6 + 18}};
+    std::vector<Box> output_box{Box{80, 6 + 0},
+                                Box{80, 6 + 3},
+                                Box{80, 6 + 6},
+                                Box{80, 6 + 9},
+                                Box{80, 6 + 12},
+                                Box{80, 6 + 15},
+                                Box{80, 6 + 18}};
     std::vector<Box> ground_box{};
     std::vector<InstructionBox> instruction_box{};
 
@@ -546,7 +544,7 @@ public:
             output_box[i].num_ = output[output.size() - 1 - i];
         }
         for (int i = 0; i < ground.size(); i++) {
-            ground_box.push_back(Box{50, 4 * i, ground[i]});
+            ground_box.push_back(Box{10 + 5 * i, 0, ground[i]});
         }
         for (int i = 0; i < instruction.size(); i++) {
             instruction_box.push_back(InstructionBox(100, i, instruction[i]->get_type(), i == pc, instruction[i]->x_));
@@ -612,7 +610,7 @@ public:
     }
 
     bool finished() {
-        return pc_ == instruction_.size() or (input_.empty() and instruction_[pc_]->get_type() == InstrSet::JUMPIFZERO);
+        return pc_ == instruction_.size() or (input_.empty() and instruction_[pc_]->get_type() == InstrSet::INBOX);
     }
 
     bool success(std::vector<int> output) {

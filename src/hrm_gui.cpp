@@ -49,6 +49,13 @@ void HRM_GUI::run() {
     }
     std::cin.get();
 
+    std::cout << "choose a level: " << std::endl;
+    int level=2;
+    std::cin >> level;
+    std::cin.get();
+    clear_screen();
+
+
 
     //=============
 
@@ -96,6 +103,7 @@ void HRM_GUI::run() {
             output.push_back(s);
         }
     };
+    //=============
 
     // 准备工作：期望的输入输出、地面的大小、可用的指令
     std::vector<int> input{};
@@ -103,7 +111,7 @@ void HRM_GUI::run() {
     int ground;
     std::vector<std::string> available_instructions{};
     // 读入输入输出、地面的大小、可用的指令
-    read(1, input, output, ground, available_instructions);
+    read(level, input, output, ground, available_instructions);
 
     // 读入编写的指令
     std::cout << "input:" << std::endl;
@@ -123,55 +131,6 @@ void HRM_GUI::run() {
     Curtain c{};
     robot->move(6, 11);
     {
-        // 画机器人
-        clear_screen();
-        robot->print();
-    }
-    {
-        c.set_state(r.input_, r.output_, r.ground_, r.instruction_, r.pc_);
-        c.print();
-        cin.get();
-        clear_screen();
-    }
-    {
-        // 移动机器人
-        int x = robot->pos_x;
-        int y = robot->pos_y;
-        int target_x;
-        int target_y;
-        if (r.instruction_[r.pc_]->get_type() == InstrSet::INBOX) {
-            target_x = 6;
-            target_y = 3;
-
-        } else if (r.instruction_[r.pc_]->get_type() == InstrSet::OUTBOX) {
-            target_x = 74;
-            target_y = 3;
-        }
-
-        int dir_x = (target_x - x == 0) ? 0 : (target_x - x > 0) ? 1 : -1;
-        int dir_y = (target_y - y == 0) ? 0 : (target_y - y > 0) ? 1 : -1;
-        while (target_x != x or target_y != y) {
-            x = (target_x == x) ? x : x + dir_x;
-            y = (target_y == y) ? y : y + dir_y;
-            robot->move(x, y);
-            clear_screen();
-            robot->print();
-            c.print();
-            Sleep(5);
-        }
-
-        if (r.instruction_[r.pc_]->get_type() == InstrSet::INBOX) {
-            robot->enable = true;
-        }
-    }
-
-    while (!r.finished()) {
-        // 执行一步
-        r.step();
-        {
-            // 获得执行完后机器人手里的数、
-            robot->hand = r.hand_;
-        }
         {
             // 画机器人
             clear_screen();
@@ -184,9 +143,6 @@ void HRM_GUI::run() {
             clear_screen();
         }
         {
-            if (r.finished()) {
-                continue;
-            }
             // 移动机器人
             int x = robot->pos_x;
             int y = robot->pos_y;
@@ -194,11 +150,11 @@ void HRM_GUI::run() {
             int target_y;
             if (r.instruction_[r.pc_]->get_type() == InstrSet::INBOX) {
                 target_x = 6;
-                target_y = 3;
+                target_y = 9;
 
             } else if (r.instruction_[r.pc_]->get_type() == InstrSet::OUTBOX) {
                 target_x = 74;
-                target_y = 3;
+                target_y = 9;
             }
 
             int dir_x = (target_x - x == 0) ? 0 : (target_x - x > 0) ? 1 : -1;
@@ -215,6 +171,69 @@ void HRM_GUI::run() {
 
             if (r.instruction_[r.pc_]->get_type() == InstrSet::INBOX) {
                 robot->enable = true;
+            }
+        }
+    }
+
+
+    while (!r.finished()) {
+        // 执行一步
+        r.step();
+        {
+            // 获得执行完后机器人手里的数、
+            robot->hand = r.hand_;
+        }
+        {
+            {
+                // 画机器人
+                clear_screen();
+                robot->print();
+            }
+            {
+                c.set_state(r.input_, r.output_, r.ground_, r.instruction_, r.pc_);
+                c.print();
+                cin.get();
+                clear_screen();
+            }
+            {
+                if (r.finished()) {
+                    continue;
+                }
+                // 移动机器人
+                int x = robot->pos_x;
+                int y = robot->pos_y;
+                int target_x;
+                int target_y;
+                if (r.instruction_[r.pc_]->get_type() == InstrSet::INBOX) {
+                    target_x = 6;
+                    target_y = 9;
+
+                } else if (r.instruction_[r.pc_]->get_type() == InstrSet::OUTBOX) {
+                    target_x = 74;
+                    target_y = 9;
+                } else if (r.instruction_[r.pc_]->get_type() == InstrSet::COPYTO or
+                           r.instruction_[r.pc_]->get_type() == InstrSet::COPYFROM or
+                           r.instruction_[r.pc_]->get_type() == InstrSet::ADD or
+                           r.instruction_[r.pc_]->get_type() == InstrSet::SUB) {
+                    target_x = 10 + 5 * r.instruction_[r.pc_]->x_;
+                    target_y = 6;
+                }
+
+                int dir_x = (target_x - x == 0) ? 0 : (target_x - x > 0) ? 1 : -1;
+                int dir_y = (target_y - y == 0) ? 0 : (target_y - y > 0) ? 1 : -1;
+                while (target_x != x or target_y != y) {
+                    x = (target_x == x) ? x : x + dir_x;
+                    y = (target_y == y) ? y : y + dir_y;
+                    robot->move(x, y);
+                    clear_screen();
+                    robot->print();
+                    c.print();
+                    Sleep(5);
+                }
+
+                if (r.instruction_[r.pc_]->get_type() == InstrSet::INBOX) {
+                    robot->enable = true;
+                }
             }
         }
     }
