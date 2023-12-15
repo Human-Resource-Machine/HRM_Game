@@ -36,7 +36,7 @@ HRM_GUI::~HRM_GUI() {
     delete robot;
 }
 
-void HRM_GUI::run() {
+bool HRM_GUI::run() {
     clear_screen();
     // 欢迎界面
     int continue_last = welcome();
@@ -49,6 +49,7 @@ void HRM_GUI::run() {
         new_record();
     }
     std::cin.get();
+    cin.sync();//清理缓冲区内容
 
 
     std::vector<std::string> config{};
@@ -62,7 +63,7 @@ void HRM_GUI::run() {
 
 
     int len = std::max(32, int(6 * config.size()));
-
+    clear_screen();
     {
         std::cout << '+';
         for (int i = 0; i < len; ++i) {
@@ -239,6 +240,7 @@ void HRM_GUI::run() {
             c.set_state(r.input_, r.output_, r.ground_, r.instruction_, r.pc_);
             c.print();
             std::cin.get();
+            cin.sync();//清理缓冲区内容
             clear_screen();
         }
         {
@@ -249,11 +251,11 @@ void HRM_GUI::run() {
             int target_y;
             if (r.instruction_[r.pc_]->get_type() == InstrSet::INBOX) {
                 target_x = 6;
-                target_y = 9;
+                target_y = 6;
 
             } else if (r.instruction_[r.pc_]->get_type() == InstrSet::OUTBOX) {
                 target_x = 74;
-                target_y = 9;
+                target_y = 6;
             }
 
             int dir_x = (target_x - x == 0) ? 0 : (target_x - x > 0) ? 1 : -1;
@@ -292,6 +294,7 @@ void HRM_GUI::run() {
                 c.set_state(r.input_, r.output_, r.ground_, r.instruction_, r.pc_);
                 c.print();
                 std::cin.get();
+                cin.sync();//清理缓冲区内容
                 clear_screen();
             }
             {
@@ -305,17 +308,17 @@ void HRM_GUI::run() {
                 int target_y;
                 if (r.instruction_[r.pc_]->get_type() == InstrSet::INBOX) {
                     target_x = 6;
-                    target_y = 9;
+                    target_y = 6;
 
                 } else if (r.instruction_[r.pc_]->get_type() == InstrSet::OUTBOX) {
                     target_x = 74;
-                    target_y = 9;
+                    target_y = 6;
                 } else if (r.instruction_[r.pc_]->get_type() == InstrSet::COPYTO or
                            r.instruction_[r.pc_]->get_type() == InstrSet::COPYFROM or
                            r.instruction_[r.pc_]->get_type() == InstrSet::ADD or
                            r.instruction_[r.pc_]->get_type() == InstrSet::SUB) {
-                    target_x = 10 + 5 * r.instruction_[r.pc_]->x_;
-                    target_y = 6;
+                    target_x = 18 + 6 * r.instruction_[r.pc_]->x_;
+                    target_y = 8;
                 }
 
                 int dir_x = (target_x - x == 0) ? 0 : (target_x - x > 0) ? 1 : -1;
@@ -339,13 +342,29 @@ void HRM_GUI::run() {
     clear_screen();
 
     if (r.success(output)) {
-        std::cout << "success";
+        std::cout << "success" << std::endl;
+        record->card[record_id].level = std::max(std::max(level + 1, record->card[record_id].level),
+                                                 atoi(config.back().c_str()));
     } else {
-        std::cout << "fail";
+        std::cout << "fail" << std::endl;
     }
-    std::cin.get();
+    std::cout << "共执行了" << r.clock << "步指令" << std::endl << std::endl;
 
 
+    do {
+        std::cout << "输入again以重新选择关卡并开始游戏，输入over以结束游戏并保存" << std::endl;
+        cin.sync();
+        std::getline(std::cin, op);
+    } while (op != "again" and op != "over");
+    if (op == "again") {
+        cin.sync();//清理缓冲区内容
+        return true;
+    } else if (op == "over") {
+        record->save();
+        return false;
+    }
+
+    return false;
 }
 
 void HRM_GUI::new_record() {

@@ -5,9 +5,7 @@
 int main() {
 
     HRM_GUI my_game;
-    while (1) {
-        my_game.run();
-    }
-
+    bool result;
+    do { result = my_game.run(); } while (result);
     return 0;
 }

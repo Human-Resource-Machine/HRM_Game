@@ -29,5 +29,6 @@
     "sub",
     "jump",
     "jumpifzero"
-  ]
+  ],
+  "description": "对于输入序列中的每两个东西，先把第1个减去第2个，并把结果放在输出序列中，然后\n把第2个减去第1个，再把结果放在输出序列中，重复。 \n输入序列：3,9,5,1,-2,-2,9,-9 \n目标输出序列：-6,6,4,-4,0,0,18,-18 \n可用空地数：3 \n可用指令集：inbox,outbox,copyfrom,copyto,add,sub,jump,jumpifzero"
 }

@@ -537,20 +537,20 @@ public:
 
 class Curtain : public Object {
 public:
-    std::vector<Box> input_box{Box{0, 6 + 0},
-                               Box{0, 6 + 3},
-                               Box{0, 6 + 6},
-                               Box{0, 6 + 9},
-                               Box{0, 6 + 12},
-                               Box{0, 6 + 15},
-                               Box{0, 6 + 18}};
-    std::vector<Box> output_box{Box{80, 6 + 0},
-                                Box{80, 6 + 3},
-                                Box{80, 6 + 6},
-                                Box{80, 6 + 9},
-                                Box{80, 6 + 12},
-                                Box{80, 6 + 15},
-                                Box{80, 6 + 18}};
+    std::vector<Box> input_box{Box{0, 3 + 0},
+                               Box{0, 3 + 3},
+                               Box{0, 3 + 6},
+                               Box{0, 3 + 9},
+                               Box{0, 3 + 12},
+                               Box{0, 3 + 15},
+                               Box{0, 3 + 18}};
+    std::vector<Box> output_box{Box{80, 3 + 0},
+                                Box{80, 3 + 3},
+                                Box{80, 3 + 6},
+                                Box{80, 3 + 9},
+                                Box{80, 3 + 12},
+                                Box{80, 3 + 15},
+                                Box{80, 3 + 18}};
     std::vector<Box> ground_box{};
     std::vector<InstructionBox> instruction_box{};
 
@@ -562,16 +562,16 @@ public:
         for (auto &box: output_box) {
             box.enable = false;
         }
-        for (int i = 0; i < input.size(); i++) {
+        for (int i = 0; i < std::min(input.size(),input_box.size()); i++) {
             input_box[i].enable = true;
             input_box[i].num_ = input[i];
         }
-        for (int i = 0; i < output.size(); i++) {
+        for (int i = 0; i < std::min(output.size(), output_box.size()); i++) {
             output_box[i].enable = true;
             output_box[i].num_ = output[output.size() - 1 - i];
         }
         for (int i = 0; i < ground.size(); i++) {
-            ground_box.push_back(Box{10 + 5 * i, 0, ground[i]});
+            ground_box.push_back(Box{18 + 6 * i, 12, ground[i]});
         }
         for (int i = 0; i < instruction.size(); i++) {
             instruction_box.push_back(InstructionBox(100, i, instruction[i]->get_type(), i == pc, instruction[i]->x_));
@@ -627,7 +627,6 @@ public:
                 x = atoi(x_.c_str());
 
             } else {
-
                 instruction_.push_back(new InstrSet::unknown());
                 return;
             }
