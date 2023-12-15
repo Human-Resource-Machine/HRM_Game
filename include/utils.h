@@ -26,6 +26,48 @@ namespace InstrSet {
         UNKNOWN
     };
 
+    inline std::string to_string(InstrType type) {
+        switch (type) {
+            case INBOX:
+                return "inbox";
+                break;
+
+            case OUTBOX:
+                return "outbox";
+                break;
+
+            case COPYFROM:
+                return "copyfrom";
+                break;
+
+            case COPYTO:
+                return "copyto";
+                break;
+
+            case ADD:
+                return "add";
+                break;
+
+            case SUB:
+                return "sub";
+                break;
+
+            case JUMP:
+                return "jump";
+                break;
+
+            case JUMPIFZERO:
+                return "jumpifzero";
+                break;
+
+            case UNKNOWN:
+                return "unknown";
+                break;
+
+        }
+        return "unknown";
+    }
+
 
     class instruction {
     public:
@@ -57,6 +99,7 @@ namespace InstrSet {
         [[nodiscard]] std::string to_string() const override {
             return "inbox";
         }
+
 
         void accept(std::vector<int> &ground,
                     int &hand,
@@ -654,12 +697,12 @@ public:
 
     bool finished() {
         return pc_ == instruction_.size() or (input_.empty() and instruction_[pc_]->get_type() == InstrSet::INBOX) or
-               instruction_[pc_]->get_type() == InstrSet::UNKNOWN;
+               error_on_instruction();
     }
 
     bool success(std::vector<int> output) {
         // TODO: 检查是否成功
-        if (finished()) {
+        if (finished() and not error_on_instruction()) {
             if (output == output_) {
                 return true;
             }
@@ -668,7 +711,11 @@ public:
     }
 
     bool error_on_instruction() {
-        return instruction_[pc_]->get_type() == InstrSet::UNKNOWN;
+        return instruction_[pc_]->get_type() == InstrSet::UNKNOWN or (std::find(available_instructions.begin(),
+                                                                                available_instructions.end(),
+                                                                                to_string(
+                                                                                        instruction_[pc_]->get_type())) ==
+                                                                      available_instructions.end());
     }
 
 

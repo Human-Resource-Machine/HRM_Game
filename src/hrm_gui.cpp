@@ -172,11 +172,12 @@ bool HRM_GUI::run() {
 
     std::string op;
     do {
-        std::cout << "请输入您希望输入指令的方式\n1.命令行输入\n2.指令输入" << std::endl;
+        std::cout << "请输入您希望输入指令的方式\n1.命令行输入\n2.文件输入" << std::endl;
         getline(std::cin, op);
     } while (op != "1" and op != "2");
 
     code_manager r;
+    r.available_instructions = available_instructions;
     if (op == "1") {
         // 读入编写的指令
         std::cout << "空行结束指令输入" << std::endl;
@@ -255,7 +256,7 @@ bool HRM_GUI::run() {
                 clear_screen();
                 robot->print();
                 c.print();
-                Sleep(5);
+                Sleep(1);
             }
 
             if (r.instruction_[r.pc_]->get_type() == InstrSet::INBOX) {
@@ -318,7 +319,7 @@ bool HRM_GUI::run() {
                     clear_screen();
                     robot->print();
                     c.print();
-                    Sleep(5);
+                    Sleep(1);
                 }
 
                 if (r.instruction_[r.pc_]->get_type() == InstrSet::INBOX) {
