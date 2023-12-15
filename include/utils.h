@@ -562,7 +562,7 @@ public:
         for (auto &box: output_box) {
             box.enable = false;
         }
-        for (int i = 0; i < std::min(input.size(),input_box.size()); i++) {
+        for (int i = 0; i < std::min(input.size(), input_box.size()); i++) {
             input_box[i].enable = true;
             input_box[i].num_ = input[i];
         }
@@ -601,6 +601,7 @@ public:
     std::vector<int> output_{};
     std::vector<int> ground_{};
     std::vector<InstrSet::instruction *> instruction_{};
+    std::vector<std::string> available_instructions{};
     int pc_{};
     int hand_{};
     int clock{};
@@ -652,7 +653,8 @@ public:
     }
 
     bool finished() {
-        return pc_ == instruction_.size() or (input_.empty() and instruction_[pc_]->get_type() == InstrSet::INBOX);
+        return pc_ == instruction_.size() or (input_.empty() and instruction_[pc_]->get_type() == InstrSet::INBOX) or
+               instruction_[pc_]->get_type() == InstrSet::UNKNOWN;
     }
 
     bool success(std::vector<int> output) {
@@ -663,6 +665,10 @@ public:
             }
         }
         return false;
+    }
+
+    bool error_on_instruction() {
+        return instruction_[pc_]->get_type() == InstrSet::UNKNOWN;
     }
 
 

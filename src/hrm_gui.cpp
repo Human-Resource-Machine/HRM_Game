@@ -37,21 +37,6 @@ HRM_GUI::~HRM_GUI() {
 }
 
 bool HRM_GUI::run() {
-    clear_screen();
-    // 欢迎界面
-    int continue_last = welcome();
-    clear_screen();
-    // 角色创建
-    if (!continue_last) {
-        // 删除旧档
-        record->card[record_id].valid = false;
-        record->save();
-        new_record();
-    }
-    std::cin.get();
-    cin.sync();//清理缓冲区内容
-
-
     std::vector<std::string> config{};
     {
         for (auto &i: std::filesystem::directory_iterator("../level/")) {
@@ -118,7 +103,8 @@ bool HRM_GUI::run() {
         do {
             std::cout << "请输入本局您希望进行的关卡" << std::endl;
             std::getline(std::cin, level_);
-        } while (level_ != std::to_string(atoi(level_.c_str())));
+        } while (level_ != std::to_string(atoi(level_.c_str())) or
+                 std::to_string(record->card[record_id].level) < level_);
     } while (std::find(config.begin(), config.end(), level_) == config.end());
     clear_screen();
     int level = atoi(level_.c_str());
@@ -215,6 +201,8 @@ bool HRM_GUI::run() {
         }
         fin.close();
     }
+
+
 
 
 
@@ -343,8 +331,10 @@ bool HRM_GUI::run() {
 
     if (r.success(output)) {
         std::cout << "success" << std::endl;
-        record->card[record_id].level = std::max(std::max(level + 1, record->card[record_id].level),
-                                                 atoi(config.back().c_str()));
+        record->card[record_id].level = std::min(std::max(level + 1, record->card[record_id].level),
+                                                 atoi(config.back().c_str()) + 1);
+    } else if (r.error_on_instruction()) {
+        std::cout << "Error on instruction " << r.pc_ + 1 << std::endl;
     } else {
         std::cout << "fail" << std::endl;
     }
