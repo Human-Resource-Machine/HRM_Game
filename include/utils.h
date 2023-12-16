@@ -698,35 +698,40 @@ public:
     }
 
     bool finished() {
-        return pc_ == instruction_.size() or (input_.empty() and instruction_[pc_]->get_type() == InstrSet::INBOX) or
+        return pc_ == instruction_.size() or (0 <= pc_ and pc_ < instruction_.size() and input_.empty() and
+                                              instruction_[pc_]->get_type() == InstrSet::INBOX) or
                error_on_instruction();
     }
 
     bool success(std::vector<int> output) {
         // TODO: 检查是否成功
         if (finished() and not error_on_instruction()) {
-            int s1 = output.size();
-            int s2 = output_.size();
-            if (s1 != s2) {
-                return false;
-            }
-            for (int i = 0; i < output.size(); ++i) {
-                int x1 = output[i];
-                int x2 = output_[i];
-                if (x1 != x2) {
-                    return false;
-                }
-            }
+            return output == output_;
         }
-        return true;
+        return false;
     }
 
     bool error_on_instruction() {
+        // shouldn't reach this
+        if (pc_ > instruction_.size() or pc_ < 0) {
+            assert(false);
+        }
+        if (pc_ == instruction_.size()) {
+            return false;
+        }
         return instruction_[pc_]->get_type() == InstrSet::UNKNOWN or (std::find(available_instructions.begin(),
                                                                                 available_instructions.end(),
                                                                                 to_string(
                                                                                         instruction_[pc_]->get_type())) ==
-                                                                      available_instructions.end());
+                                                                      available_instructions.end()
+                                                                      or ((instruction_[pc_]->get_type() ==
+                                                                           InstrSet::JUMP or
+                                                                           instruction_[pc_]->get_type() ==
+                                                                           InstrSet::JUMPIFZERO) and
+                                                                          (instruction_[pc_]->x_ < 0 or
+                                                                           instruction_[pc_]->x_ >=
+                                                                           instruction_.size())));
+
     }
 
 
