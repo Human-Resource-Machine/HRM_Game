@@ -4,13 +4,14 @@ copyto 1
 inbox
 sub 3
 copyto 2
-jumpifzero 13
+jumpifzero 14
 copyfrom 1
 add 0
 copyto 1
 copyfrom 2
 sub 3
 copyto 2
-jump 5
+jump 6
+copyfrom 1
 outbox
 jump 0
