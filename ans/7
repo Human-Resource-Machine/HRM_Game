@@ -2,6 +2,7 @@ inbox
 copyto 0
 copyto 1
 inbox
+sub 3
 copyto 2
 jumpifzero 13
 copyfrom 1
