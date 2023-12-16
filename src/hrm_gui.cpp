@@ -228,7 +228,7 @@ bool HRM_GUI::run() {
             c.print();
 
             if (s == single) {
-                std::cout << "请输入0/1表示您想进行的操作\n0 单步进行\n1 连续进行至游戏结束\n";
+                std::cout << "请输入0/1表示您想进行的操作 0-单步进行 1-连续进行至游戏结束\n";
                 std::string state;
                 do { std::getline(cin, state); }
                 while (state != "0" and state != "1");
@@ -297,10 +297,10 @@ bool HRM_GUI::run() {
 
 
                 if (s == single) {
-                    std::cout << "请输入1/2表示您想进行的操作\n1 单步进行\n2 连续进行至游戏结束\n";
+                    std::cout << "请输入0/1表示您想进行的操作 0-单步进行 1-连续进行至游戏结束\n";
                     std::string state;
                     do { std::getline(cin, state); }
-                    while (state != "0" or state != "1");
+                    while (state != "0" and state != "1");
                     if (state == "1") { s = multiple; }
                 }
                 clear_screen();
