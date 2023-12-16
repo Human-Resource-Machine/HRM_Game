@@ -574,10 +574,11 @@ public:
     InstrSet::InstrType type_;
     bool pc_ = false;
     int x_ = 0;
+    int num_ = 0;
 
-    explicit InstructionBox(int _x, int _y, InstrSet::InstrType type, bool pc, int x) : Object(_x, _y),
-                                                                                        type_(type), pc_(pc),
-                                                                                        x_(x) {}
+    explicit InstructionBox(int _x, int _y, InstrSet::InstrType type, bool pc, int x, int num) : Object(_x, _y),
+                                                                                                 type_(type), pc_(pc),
+                                                                                                 x_(x), num_(num) {}
 
 
     void print() override {
@@ -592,6 +593,7 @@ public:
         {
             set_cursor(pos_x, pos_y);
             std::cout << (pc_ ? '*' : ' ');
+            std::cout << std::setw(2) << num_<<' ';
             if (type_ == InstrSet::INBOX)
                 std::cout << "inbox";
             else if (type_ == InstrSet::OUTBOX)
@@ -660,7 +662,8 @@ public:
             ground_box.push_back(Box{18 + 6 * i, 12, ground[i]});
         }
         for (int i = 0; i < instruction.size(); i++) {
-            instruction_box.push_back(InstructionBox(100, i, instruction[i]->get_type(), i == pc, instruction[i]->x_));
+            instruction_box.push_back(
+                    InstructionBox(100, i, instruction[i]->get_type(), i == pc, instruction[i]->x_, i));
         }
     }
 
