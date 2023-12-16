@@ -134,7 +134,7 @@ bool HRM_GUI::run() {
     };
 
     auto read = [&readJsonFile](int level, std::vector<int> &input, std::vector<int> &output, int &ground,
-                                std::vector<std::string> &instructions) -> std::string {
+                                std::vector<std::string> &instructions) -> auto {
         using std::vector;
         using std::string;
         input.clear();
@@ -154,7 +154,8 @@ bool HRM_GUI::run() {
             auto s = i.asInt();
             output.push_back(s);
         }
-        return root["description"].asString();
+        bool flag = root["flag"].asBool();
+        return std::make_pair(root["description"].asString(), flag);
     };
     //=============
 
@@ -164,7 +165,9 @@ bool HRM_GUI::run() {
     int ground;
     std::vector<std::string> available_instructions{};
     // 读入输入输出、地面的大小、可用的指令
-    std::string description = read(level, input, output, ground, available_instructions);
+    auto p = read(level, input, output, ground, available_instructions);
+    std::string description = p.first;
+    bool flag = p.second;
     // 要求
     std::cout << description << std::endl << std::endl;
     // 输入方式
@@ -183,7 +186,7 @@ bool HRM_GUI::run() {
         std::cout << "空行结束指令输入" << std::endl;
         std::string s;
         r.input_ = input;
-        r.ground_ = std::vector<int>(ground, 0);
+        r.ground_ = flag ? std::vector<int>(ground, 1) : std::vector<int>(ground, 0);
         while (getline(std::cin, s)) {
             if (s == "") break;
             r.add_instruction(s);
