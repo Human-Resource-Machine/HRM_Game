@@ -204,13 +204,11 @@ bool HRM_GUI::run() {
     }
 
 
+#define single 0
+#define multiple 1
 
-
-
-
-
-
-
+    typedef int state;
+    state s = single;
 
     // TODO: 检查指令是否合法
     // 运行
@@ -228,8 +226,20 @@ bool HRM_GUI::run() {
         {
             c.set_state(r.input_, r.output_, r.ground_, r.instruction_, r.pc_);
             c.print();
-            std::cin.get();
-            cin.sync();//清理缓冲区内容
+
+            if (s == single) {
+                std::cout << "请输入0/1表示您想进行的操作\n0 单步进行\n1 连续进行至游戏结束\n";
+                std::string state;
+                do { std::getline(cin, state); }
+                while (state != "0" and state != "1");
+                if (state == "1") { s = multiple; }
+            }
+
+//            std::cin.get();
+//            cin.sync();//清理缓冲区内容
+
+
+
             clear_screen();
         }
         {
@@ -282,8 +292,17 @@ bool HRM_GUI::run() {
             {
                 c.set_state(r.input_, r.output_, r.ground_, r.instruction_, r.pc_);
                 c.print();
-                std::cin.get();
-                cin.sync();//清理缓冲区内容
+//                std::cin.get();
+//                cin.sync();//清理缓冲区内容
+
+
+                if (s == single) {
+                    std::cout << "请输入1/2表示您想进行的操作\n1 单步进行\n2 连续进行至游戏结束\n";
+                    std::string state;
+                    do { std::getline(cin, state); }
+                    while (state != "0" or state != "1");
+                    if (state == "1") { s = multiple; }
+                }
                 clear_screen();
             }
             {
