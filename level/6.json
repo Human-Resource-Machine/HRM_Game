@@ -1,0 +1,14 @@
+{
+    "input": [6, -2, 2, 0],
+    "output": [240, -80, 80, 0],
+    "ground": 5,
+    "instructions": [
+        "inbox",
+        "outbox",
+        "copyfrom",
+        "copyto",
+        "add",
+        "jump"
+    ],
+    "description": "将inbox中的每个数乘以40并输出到outbox中。\n学会让程序变得简洁是每位程序员的基本素养。"
+}

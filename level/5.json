@@ -1,0 +1,13 @@
+{
+    "input": [7, -3, 6, 0],
+    "output": [56, -24, 48, 0],
+    "ground": 3,
+    "instructions": [
+        "inbox",
+        "outbox",
+        "copyto",
+        "add",
+        "jump"
+    ],
+    "description": "对于inbox中的每个数，将其乘以8并把结果输出到outbox中。\n一位合格的程序员不应该使用大量冗余的加法指令。"
+}

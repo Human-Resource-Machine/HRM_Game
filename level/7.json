@@ -1,0 +1,16 @@
+{
+    "input" : [7, 8, 9, 9, 10, 11],
+    "output" : [56, 81, 110],
+    "ground": 5,
+    "instructions": [
+        "inbox",
+        "outbox",
+        "copyfrom",
+        "copyto",
+        "add",
+        "jump",
+        "jumpifzero"
+    ],
+    "flag": true,
+    "description": "inbox中若干对正数，将其两两相乘，依次输出结果到outbox中。\n没有乘法的编程世界不是完整的，但是一名合格的程序员可以用世界的基石创造出乘法来。"
+}
