@@ -599,6 +599,8 @@ public:
 
     void set_state(std::vector<int> &input, std::vector<int> &output, std::vector<int> &ground,
                    std::vector<InstrSet::instruction *> instruction, int pc) {
+        ground_box.clear();
+        instruction_box.clear();
         for (auto &box: input_box) {
             box.enable = false;
         }
@@ -703,11 +705,20 @@ public:
     bool success(std::vector<int> output) {
         // TODO: 检查是否成功
         if (finished() and not error_on_instruction()) {
-            if (output == output_) {
-                return true;
+            int s1 = output.size();
+            int s2 = output_.size();
+            if (s1 != s2) {
+                return false;
+            }
+            for (int i = 0; i < output.size(); ++i) {
+                int x1 = output[i];
+                int x2 = output_[i];
+                if (x1 != x2) {
+                    return false;
+                }
             }
         }
-        return false;
+        return true;
     }
 
     bool error_on_instruction() {

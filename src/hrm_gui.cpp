@@ -317,9 +317,9 @@ bool HRM_GUI::run() {
                     y = (target_y == y) ? y : y + dir_y;
                     robot->move(x, y);
                     clear_screen();
-                    robot->print();
                     c.print();
-                    Sleep(1);
+                    robot->print();
+                    Sleep(5);
                 }
 
                 if (r.instruction_[r.pc_]->get_type() == InstrSet::INBOX) {
