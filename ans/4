@@ -1,5 +1,5 @@
 inbox
-jumpifnegative
+jumpifneg 3
 jump 6
 copyto 0
 sub 0

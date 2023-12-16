@@ -23,6 +23,7 @@ namespace InstrSet {
         SUB,
         JUMP,
         JUMPIFZERO,
+        JUMPIFNEG,
         UNKNOWN
     };
 
@@ -58,6 +59,10 @@ namespace InstrSet {
 
             case JUMPIFZERO:
                 return "jumpifzero";
+                break;
+
+            case JUMPIFNEG:
+                return "jumpifneg";
                 break;
 
             case UNKNOWN:
@@ -303,6 +308,40 @@ namespace InstrSet {
 
         InstrSet::InstrType get_type() const override {
             return InstrSet::JUMPIFZERO;
+        }
+    };
+
+    class jumpifneg : public instruction {
+    public:
+
+        explicit jumpifneg(int x) : instruction(x) {
+
+        }
+
+        void print() const override {
+            std::cout << "jumpifneg" << ' ' << x_ << std::endl;
+        }
+
+
+        [[nodiscard]] std::string to_string() const override {
+            return std::string("jumpifneg ") + std::to_string(x_);
+        }
+
+
+        void accept(std::vector<int> &ground,
+                    int &hand,
+                    std::vector<int> &input,
+                    std::vector<int> &output,
+                    int &pc) override {
+            if (hand < 0) {
+                pc = x_;
+            } else {
+                pc += 1;
+            }
+        }
+
+        InstrSet::InstrType get_type() const override {
+            return InstrSet::JUMPIFNEG;
         }
     };
 
@@ -561,6 +600,8 @@ public:
                 std::cout << "jump" << ' ' << x_;
             else if (type_ == InstrSet::JUMPIFZERO)
                 std::cout << "jumpifzero" << ' ' << x_;
+            else if (type_ == InstrSet::JUMPIFNEG)
+                std::cout << "jumpifneg" << ' ' << x_;
             else if (type_ == InstrSet::ADD)
                 std::cout << "add" << ' ' << x_;
             else if (type_ == InstrSet::SUB)
@@ -688,6 +729,10 @@ public:
                 instruction_.push_back(new InstrSet::jump(x));
             } else if (op == "jumpifzero") {
                 instruction_.push_back(new InstrSet::jumpifzero(x));
+            } else if (op == "jumpifneg") {
+                instruction_.push_back(new InstrSet::jumpifneg(x));
+            } else {
+                instruction_.push_back(new InstrSet::unknown());
             }
         }
     }
@@ -727,7 +772,9 @@ public:
                                                                       or ((instruction_[pc_]->get_type() ==
                                                                            InstrSet::JUMP or
                                                                            instruction_[pc_]->get_type() ==
-                                                                           InstrSet::JUMPIFZERO) and
+                                                                           InstrSet::JUMPIFZERO or
+                                                                           instruction_[pc_]->get_type() ==
+                                                                           InstrSet::JUMPIFNEG) and
                                                                           (instruction_[pc_]->x_ < 0 or
                                                                            instruction_[pc_]->x_ >=
                                                                            instruction_.size())));

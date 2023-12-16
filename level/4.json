@@ -11,7 +11,7 @@
         "sub",
         "jump",
         "jumpifzero",
-        "jumpifnegative"
+        "jumpifneg"
     ],
     "description": "把INBOX中的每样东西送到OUTBOX中。但是，如果是个负数，请先去掉它的负号。"
 }

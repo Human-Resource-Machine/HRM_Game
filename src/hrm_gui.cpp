@@ -246,8 +246,8 @@ bool HRM_GUI::run() {
             // 移动机器人
             int x = robot->pos_x;
             int y = robot->pos_y;
-            int target_x;
-            int target_y;
+            int target_x=x;
+            int target_y=y;
             if (r.instruction_[r.pc_]->get_type() == InstrSet::INBOX) {
                 target_x = 6;
                 target_y = 6;
@@ -312,8 +312,8 @@ bool HRM_GUI::run() {
                 // 移动机器人
                 int x = robot->pos_x;
                 int y = robot->pos_y;
-                int target_x;
-                int target_y;
+                int target_x=x;
+                int target_y=y;
                 if (r.instruction_[r.pc_]->get_type() == InstrSet::INBOX) {
                     target_x = 6;
                     target_y = 6;
