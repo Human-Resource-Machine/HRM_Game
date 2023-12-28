@@ -749,3 +749,12 @@ void HRM_GUI::clear_line(int line) {
 void HRM_GUI::reset_cursor() {
     set_cursor(0, 0);
 }
+
+void HRM_GUI::clear_rectangle(int x1, int y1, int x2, int y2) {
+    for (int i = y1; i <= y2; i++) {
+        set_cursor(x1, i);
+        for (int j = x1; j <= x2; j++) {
+            std::cout << ' ';
+        }
+    }
+}

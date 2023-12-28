@@ -41,5 +41,7 @@ public:
 
     void clear_line(int _y);
 
+    void clear_rectangle(int x1, int y1, int x2, int y2);
+
     void new_record();  // 新建存档
 };
