@@ -86,10 +86,11 @@ namespace InstrSet {
 
 
         virtual void accept(std::vector<int> &ground,
+                            std::vector<bool> &ground_y,
                             int &hand,
                             std::vector<int> &input,
                             std::vector<int> &output,
-                            int &pc) = 0;
+                            int &pc, bool &handy) = 0;
 
         virtual InstrSet::InstrType get_type() const = 0;
     };
@@ -107,12 +108,14 @@ namespace InstrSet {
 
 
         void accept(std::vector<int> &ground,
+                    std::vector<bool> &ground_y,
                     int &hand,
                     std::vector<int> &input,
                     std::vector<int> &output,
-                    int &pc) override {
+                    int &pc, bool &handy) override {
             hand = input.front();
             input.erase(input.begin());
+            handy = true;
             pc += 1;
         }
 
@@ -133,11 +136,13 @@ namespace InstrSet {
         }
 
         void accept(std::vector<int> &ground,
+                    std::vector<bool> &ground_y,
                     int &hand,
                     std::vector<int> &input,
                     std::vector<int> &output,
-                    int &pc) override {
+                    int &pc, bool &handy) override {
             output.push_back(hand);
+            handy = false;
             pc += 1;
         }
 
@@ -159,10 +164,11 @@ namespace InstrSet {
         }
 
         void accept(std::vector<int> &ground,
+                    std::vector<bool> &ground_y,
                     int &hand,
                     std::vector<int> &input,
                     std::vector<int> &output,
-                    int &pc) override {
+                    int &pc, bool &handy) override {
             hand += ground[x_];
             pc += 1;
         }
@@ -186,10 +192,11 @@ namespace InstrSet {
         }
 
         void accept(std::vector<int> &ground,
+                    std::vector<bool> &ground_y,
                     int &hand,
                     std::vector<int> &input,
                     std::vector<int> &output,
-                    int &pc) override {
+                    int &pc, bool &handy) override {
             hand -= ground[x_];
             pc += 1;
         }
@@ -213,11 +220,13 @@ namespace InstrSet {
         }
 
         void accept(std::vector<int> &ground,
+                    std::vector<bool> &ground_y,
                     int &hand,
                     std::vector<int> &input,
                     std::vector<int> &output,
-                    int &pc) override {
+                    int &pc, bool &handy) override {
             ground[x_] = hand;
+            ground_y[x_] = true;
             pc += 1;
         }
 
@@ -241,10 +250,12 @@ namespace InstrSet {
         }
 
         void accept(std::vector<int> &ground,
+                    std::vector<bool> &ground_y,
                     int &hand,
                     std::vector<int> &input,
                     std::vector<int> &output,
-                    int &pc) override {
+                    int &pc, bool &handy) override {
+            handy = true;
             hand = ground[x_];
             pc += 1;
         }
@@ -267,11 +278,12 @@ namespace InstrSet {
         }
 
         void accept(std::vector<int> &ground,
+                    std::vector<bool> &ground_y,
                     int &hand,
                     std::vector<int> &input,
                     std::vector<int> &output,
-                    int &pc) override {
-            pc = x_;
+                    int &pc, bool &handy) override {
+            pc = x_ - 1;
         }
 
         InstrSet::InstrType get_type() const override {
@@ -294,12 +306,13 @@ namespace InstrSet {
         }
 
         void accept(std::vector<int> &ground,
+                    std::vector<bool> &ground_y,
                     int &hand,
                     std::vector<int> &input,
                     std::vector<int> &output,
-                    int &pc) override {
+                    int &pc, bool &handy) override {
             if (hand == 0) {
-                pc = x_;
+                pc = x_ - 1;
 
             } else {
                 pc += 1;
@@ -329,12 +342,13 @@ namespace InstrSet {
 
 
         void accept(std::vector<int> &ground,
+                    std::vector<bool> &ground_y,
                     int &hand,
                     std::vector<int> &input,
                     std::vector<int> &output,
-                    int &pc) override {
+                    int &pc, bool &handy) override {
             if (hand < 0) {
-                pc = x_;
+                pc = x_ - 1;
             } else {
                 pc += 1;
             }
@@ -359,10 +373,11 @@ namespace InstrSet {
         }
 
         void accept(std::vector<int> &ground,
+                    std::vector<bool> &ground_y,
                     int &hand,
                     std::vector<int> &input,
                     std::vector<int> &output,
-                    int &pc) override {
+                    int &pc, bool &handy) override {
 
         }
 
@@ -641,7 +656,7 @@ public:
     std::vector<InstructionBox> instruction_box{};
 
     void set_state(std::vector<int> &input, std::vector<int> &output, std::vector<int> &ground,
-                   std::vector<InstrSet::instruction *> instruction, int pc) {
+                   std::vector<InstrSet::instruction *> instruction, int pc,std::vector<bool> &ground_y) {
         ground_box.clear();
         instruction_box.clear();
         for (auto &box: input_box) {
@@ -659,11 +674,11 @@ public:
             output_box[i].num_ = output[output.size() - 1 - i];
         }
         for (int i = 0; i < ground.size(); i++) {
-            ground_box.push_back(Box{18 + 6 * i, 12, ground[i]});
+            ground_box.emplace_back(18 + 6 * i, 12, ground[i]);
+//            ground_box[i].enable = ground_y[i];
         }
         for (int i = 0; i < instruction.size(); i++) {
-            instruction_box.push_back(
-                    InstructionBox(100, i, instruction[i]->get_type(), i == pc, instruction[i]->x_, i));
+            instruction_box.emplace_back(100, i, instruction[i]->get_type(), i == pc, instruction[i]->x_, i);
         }
     }
 
@@ -689,11 +704,14 @@ public:
     std::vector<int> input_{};
     std::vector<int> output_{};
     std::vector<int> ground_{};
+    std::vector<bool> ground_y{};
     std::vector<InstrSet::instruction *> instruction_{};
     std::vector<std::string> available_instructions{};
     int pc_{};
     int hand_{};
+    bool handy = false;
     int clock{};
+
 
     void add_instruction(std::string s) {
         if (s == "inbox") {
@@ -741,7 +759,7 @@ public:
     }
 
     void step() {
-        instruction_[pc_]->accept(ground_, hand_, input_, output_, pc_);
+        instruction_[pc_]->accept(ground_, ground_y, hand_, input_, output_, pc_, handy);
         clock++;
     }
 
@@ -767,20 +785,42 @@ public:
         if (pc_ == instruction_.size()) {
             return false;
         }
-        return instruction_[pc_]->get_type() == InstrSet::UNKNOWN or (std::find(available_instructions.begin(),
-                                                                                available_instructions.end(),
-                                                                                to_string(
-                                                                                        instruction_[pc_]->get_type())) ==
-                                                                      available_instructions.end()
-                                                                      or ((instruction_[pc_]->get_type() ==
-                                                                           InstrSet::JUMP or
-                                                                           instruction_[pc_]->get_type() ==
-                                                                           InstrSet::JUMPIFZERO or
-                                                                           instruction_[pc_]->get_type() ==
-                                                                           InstrSet::JUMPIFNEG) and
-                                                                          (instruction_[pc_]->x_ < 0 or
-                                                                           instruction_[pc_]->x_ >=
-                                                                           instruction_.size())));
+        return instruction_[pc_]->get_type() == InstrSet::UNKNOWN
+
+               or std::find(available_instructions.begin(), available_instructions.end(),
+                            to_string(instruction_[pc_]->get_type())) == available_instructions.end()
+
+               or (instruction_[pc_]->get_type() == InstrSet::OUTBOX and !handy)
+
+               or
+               ((instruction_[pc_]->get_type() == InstrSet::ADD or instruction_[pc_]->get_type() == InstrSet::SUB) and
+                (!handy or instruction_[pc_]->x_ < 0 or instruction_[pc_]->x_ >= ground_.size() or
+                 !ground_y[instruction_[pc_]->x_]))
+
+               or (instruction_[pc_]->get_type() == InstrSet::COPYTO and
+                   (!handy or instruction_[pc_]->x_ < 0 or instruction_[pc_]->x_ >= ground_.size()))
+
+               or (instruction_[pc_]->get_type() == InstrSet::COPYFROM and
+                   (instruction_[pc_]->x_ < 0 or instruction_[pc_]->x_ >= ground_.size() or
+                    !ground_y[instruction_[pc_]->x_])
+
+                   or (instruction_[pc_]->get_type() ==
+                       InstrSet::JUMP and (instruction_[pc_]->x_ <= 0 or instruction_[pc_]->x_ > instruction_.size()))
+
+                   or (instruction_[pc_]->get_type() == InstrSet::JUMPIFZERO and
+                       (!handy or instruction_[pc_]->x_ <= 0 or instruction_[pc_]->x_ > instruction_.size()))
+//
+//                   or ((instruction_[pc_]->get_type() ==
+//                        InstrSet::JUMP or
+//                        instruction_[pc_]->get_type() ==
+//                        InstrSet::JUMPIFZERO or
+//                        instruction_[pc_]->get_type() ==
+//                        InstrSet::JUMPIFNEG) and
+//                       (instruction_[pc_]->x_ < 0 or
+//                        instruction_[pc_]->x_ >=
+//                        instruction_.size()))
+
+               );
 
     }
 

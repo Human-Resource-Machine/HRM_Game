@@ -180,6 +180,7 @@ bool HRM_GUI::run() {
     } while (op != "1" and op != "2");
 
     code_manager r;
+    r.handy = false;
     r.available_instructions = available_instructions;
     if (op == "1") {
         // 读入编写的指令
@@ -187,6 +188,7 @@ bool HRM_GUI::run() {
         std::string s;
         r.input_ = input;
         r.ground_ = flag ? std::vector<int>(ground, 1) : std::vector<int>(ground, 0);
+        r.ground_y = flag ? std::vector<bool>(ground, true) : std::vector<bool>(ground, false);
         while (getline(std::cin, s)) {
             if (s == "") break;
             r.add_instruction(s);
@@ -198,7 +200,8 @@ bool HRM_GUI::run() {
         std::ifstream fin(path);
         std::string s;
         r.input_ = input;
-        r.ground_ = std::vector<int>(ground, 0);
+        r.ground_ = flag ? std::vector<int>(ground, 1) : std::vector<int>(ground, 0);
+        r.ground_y = flag ? std::vector<bool>(ground, true) : std::vector<bool>(ground, false);
         while (getline(fin, s)) {
             if (s == "") break;
             r.add_instruction(s);
@@ -227,7 +230,7 @@ bool HRM_GUI::run() {
             robot->print();
         }
         {
-            c.set_state(r.input_, r.output_, r.ground_, r.instruction_, r.pc_);
+            c.set_state(r.input_, r.output_, r.ground_, r.instruction_, r.pc_, r.ground_y);
             c.print();
 
             if (s == single) {
@@ -293,7 +296,7 @@ bool HRM_GUI::run() {
                 robot->print();
             }
             {
-                c.set_state(r.input_, r.output_, r.ground_, r.instruction_, r.pc_);
+                c.set_state(r.input_, r.output_, r.ground_, r.instruction_, r.pc_, r.ground_y);
                 c.print();
 //                std::cin.get();
 //                cin.sync();//清理缓冲区内容
