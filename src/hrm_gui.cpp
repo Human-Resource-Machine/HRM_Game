@@ -242,11 +242,6 @@ bool HRM_GUI::run() {
                 if (state == "1") { s = multiple; }
             }
 
-//            std::cin.get();
-//            cin.sync();//清理缓冲区内容
-
-
-
             clear_screen();
         }
         {
@@ -266,14 +261,14 @@ bool HRM_GUI::run() {
 
             int dir_x = (target_x - x == 0) ? 0 : (target_x - x > 0) ? 1 : -1;
             int dir_y = (target_y - y == 0) ? 0 : (target_y - y > 0) ? 1 : -1;
+            c.print();
             while (target_x != x or target_y != y) {
                 x = (target_x == x) ? x : x + dir_x;
                 y = (target_y == y) ? y : y + dir_y;
+                clear_rectangle(robot->pos_x, robot->pos_y - 3, robot->pos_x + 4, robot->pos_y + 3);
                 robot->move(x, y);
-                clear_screen();
                 robot->print();
-                c.print();
-                Sleep(1);
+                Sleep(15);
             }
 
             if (r.instruction_[r.pc_]->get_type() == InstrSet::INBOX) {
@@ -293,12 +288,14 @@ bool HRM_GUI::run() {
         {
             {
                 // 画机器人
-                clear_screen();
+//                clear_screen();
+                clear_rectangle(robot->pos_x, robot->pos_y - 3, robot->pos_x + 4, robot->pos_y + 3);
+
                 robot->print();
             }
             {
                 c.set_state(r.input_, r.output_, r.ground_, r.instruction_, r.pc_, r.ground_y);
-                c.print();
+                c.print(true);
 //                std::cin.get();
 //                cin.sync();//清理缓冲区内容
 
@@ -310,7 +307,7 @@ bool HRM_GUI::run() {
                     while (state != "0" and state != "1");
                     if (state == "1") { s = multiple; }
                 }
-                clear_screen();
+//                clear_screen();
             }
             {
                 if (r.finished()) {
@@ -338,14 +335,14 @@ bool HRM_GUI::run() {
 
                 int dir_x = (target_x - x == 0) ? 0 : (target_x - x > 0) ? 1 : -1;
                 int dir_y = (target_y - y == 0) ? 0 : (target_y - y > 0) ? 1 : -1;
+                c.print();
                 while (target_x != x or target_y != y) {
                     x = (target_x == x) ? x : x + dir_x;
                     y = (target_y == y) ? y : y + dir_y;
+                    clear_rectangle(robot->pos_x, robot->pos_y - 3, robot->pos_x + 4, robot->pos_y + 3);
                     robot->move(x, y);
-                    clear_screen();
-                    c.print();
                     robot->print();
-                    Sleep(5);
+                    Sleep(15);
                 }
 
                 if (r.instruction_[r.pc_]->get_type() == InstrSet::INBOX) {
@@ -751,10 +748,19 @@ void HRM_GUI::reset_cursor() {
 }
 
 void HRM_GUI::clear_rectangle(int x1, int y1, int x2, int y2) {
+//    HANDLE hConsole = GetStdHandle(STD_OUTPUT_HANDLE);
+//    CONSOLE_SCREEN_BUFFER_INFO csbi;
+//    int cursorX = 0, cursorY = 0;
+//    // 获取光标位置
+//    if (GetConsoleScreenBufferInfo(hConsole, &csbi)) {
+//        cursorX = csbi.dwCursorPosition.X;
+//        cursorY = csbi.dwCursorPosition.Y;
+//    }
     for (int i = y1; i <= y2; i++) {
         set_cursor(x1, i);
         for (int j = x1; j <= x2; j++) {
             std::cout << ' ';
         }
     }
+    set_cursor(0, 0);
 }

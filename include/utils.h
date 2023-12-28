@@ -478,7 +478,7 @@ public:
         SetConsoleCursorPosition(hOut, pos);
     }
 
-    virtual void print() = 0;
+    virtual void print(bool clear = false) = 0;
 };
 
 class Robot : public Object {
@@ -490,7 +490,7 @@ public:
 
     explicit Robot(RobotType _type, int _x = 0, int _y = 0) : Object(_x, _y), type(_type) {}
 
-    void print() override {
+    void print(bool clear = false) override {
         HANDLE hConsole = GetStdHandle(STD_OUTPUT_HANDLE);
         CONSOLE_SCREEN_BUFFER_INFO csbi;
         int cursorX = 0, cursorY = 0;
@@ -559,7 +559,7 @@ public:
     explicit Box(int _x = 0, int _y = 0, int num = 0) : Object(_x, _y), num_(num) {}
 
 
-    void print() override {
+    void print(bool clear = false) override {
         HANDLE hConsole = GetStdHandle(STD_OUTPUT_HANDLE);
         CONSOLE_SCREEN_BUFFER_INFO csbi;
         int cursorX = 0, cursorY = 0;
@@ -568,7 +568,7 @@ public:
             cursorX = csbi.dwCursorPosition.X;
             cursorY = csbi.dwCursorPosition.Y;
         }
-        {
+        if (clear == false) {
             // 将光标移动到指定位置并打印机器人
             set_cursor(pos_x, pos_y);
             std::cout << "+---+";
@@ -577,6 +577,9 @@ public:
                                                                                                       << '|';
             set_cursor(pos_x, pos_y + 2);
             std::cout << "+---+";
+        } else {
+            set_cursor(pos_x + 1, pos_y + 1);
+            enable ? std::cout << std::setw(3) << std::setfill(' ') << num_ : std::cout << "   ";
         }
         // 将光标移动回原来的位置
         set_cursor(cursorX, cursorY);
@@ -596,7 +599,7 @@ public:
                                                                                                  x_(x), num_(num) {}
 
 
-    void print() override {
+    void print(bool clear = false) override {
         HANDLE hConsole = GetStdHandle(STD_OUTPUT_HANDLE);
         CONSOLE_SCREEN_BUFFER_INFO csbi;
         int cursorX = 0, cursorY = 0;
@@ -605,6 +608,7 @@ public:
             cursorX = csbi.dwCursorPosition.X;
             cursorY = csbi.dwCursorPosition.Y;
         }
+        if (clear==false)
         {
             set_cursor(pos_x, pos_y);
             std::cout << (pc_ ? '*' : ' ');
@@ -629,6 +633,11 @@ public:
                 std::cout << "copyto" << ' ' << x_;
             else if (type_ == InstrSet::UNKNOWN)
                 std::cout << "unknown";
+        }
+        else
+        {
+            set_cursor(pos_x, pos_y);
+            std::cout << (pc_ ? '*' : ' ');
         }
 
         // 将光标移动回原来的位置
@@ -682,18 +691,18 @@ public:
         }
     }
 
-    void print() override {
+    void print(bool clear = false) override {
         for (auto &box: input_box) {
-            box.print();
+            box.print(clear);
         }
         for (auto &box: output_box) {
-            box.print();
+            box.print(clear);
         }
         for (auto &box: ground_box) {
-            box.print();
+            box.print(clear);
         }
         for (auto &box: instruction_box) {
-            box.print();
+            box.print(clear);
         }
 
     }
