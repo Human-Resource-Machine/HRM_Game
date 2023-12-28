@@ -6,4 +6,4 @@ add 1
 copyto 2
 add 2
 outbox
-jump 0
+jump 1

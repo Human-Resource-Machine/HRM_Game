@@ -1,8 +1,8 @@
 inbox
-jumpifneg 3
-jump 6
+jumpifneg 4
+jump 7
 copyto 0
 sub 0
 sub 0
 outbox
-jump 0
+jump 1

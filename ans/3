@@ -2,8 +2,8 @@ inbox
 copyto 0
 inbox
 sub 0
-jumpifzero 6
-jump 0
+jumpifzero 7
+jump 1
 copyfrom 0
 outbox
-jump 0
+jump 1

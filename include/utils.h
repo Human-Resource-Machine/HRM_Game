@@ -608,7 +608,7 @@ public:
         {
             set_cursor(pos_x, pos_y);
             std::cout << (pc_ ? '*' : ' ');
-            std::cout << std::setw(2) << num_<<' ';
+            std::cout << std::setw(2) << num_ << ' ';
             if (type_ == InstrSet::INBOX)
                 std::cout << "inbox";
             else if (type_ == InstrSet::OUTBOX)
@@ -656,7 +656,7 @@ public:
     std::vector<InstructionBox> instruction_box{};
 
     void set_state(std::vector<int> &input, std::vector<int> &output, std::vector<int> &ground,
-                   std::vector<InstrSet::instruction *> instruction, int pc,std::vector<bool> &ground_y) {
+                   std::vector<InstrSet::instruction *> instruction, int pc, std::vector<bool> &ground_y) {
         ground_box.clear();
         instruction_box.clear();
         for (auto &box: input_box) {
@@ -678,7 +678,7 @@ public:
 //            ground_box[i].enable = ground_y[i];
         }
         for (int i = 0; i < instruction.size(); i++) {
-            instruction_box.emplace_back(100, i, instruction[i]->get_type(), i == pc, instruction[i]->x_, i);
+            instruction_box.emplace_back(100, i, instruction[i]->get_type(), i == pc, instruction[i]->x_, i + 1);
         }
     }
 
