@@ -675,7 +675,7 @@ public:
         }
         for (int i = 0; i < ground.size(); i++) {
             ground_box.emplace_back(18 + 6 * i, 12, ground[i]);
-//            ground_box[i].enable = ground_y[i];
+            ground_box[i].enable = ground_y[i];
         }
         for (int i = 0; i < instruction.size(); i++) {
             instruction_box.emplace_back(100, i, instruction[i]->get_type(), i == pc, instruction[i]->x_, i + 1);

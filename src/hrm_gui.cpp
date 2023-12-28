@@ -200,6 +200,7 @@ bool HRM_GUI::run() {
         std::ifstream fin(path);
         std::string s;
         r.input_ = input;
+//        assert(flag);
         r.ground_ = flag ? std::vector<int>(ground, 1) : std::vector<int>(ground, 0);
         r.ground_y = flag ? std::vector<bool>(ground, true) : std::vector<bool>(ground, false);
         while (getline(fin, s)) {
