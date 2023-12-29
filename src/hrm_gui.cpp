@@ -220,7 +220,7 @@ bool HRM_GUI::run() {
     // TODO: 检查指令是否合法
     // 运行
     clear_screen();
-    robot->ingame = true;
+    robot->ingame = r.handy;
 
     Curtain c{};
     robot->move(6, 11);
@@ -228,6 +228,7 @@ bool HRM_GUI::run() {
         {
             // 画机器人
             clear_screen();
+            robot->ingame = r.handy;
             robot->print();
         }
         {
@@ -267,6 +268,7 @@ bool HRM_GUI::run() {
                 y = (target_y == y) ? y : y + dir_y;
                 clear_rectangle(robot->pos_x, robot->pos_y - 3, robot->pos_x + 4, robot->pos_y + 3);
                 robot->move(x, y);
+                robot->ingame = r.handy;
                 robot->print();
                 Sleep(15);
             }
@@ -290,7 +292,7 @@ bool HRM_GUI::run() {
                 // 画机器人
 //                clear_screen();
                 clear_rectangle(robot->pos_x, robot->pos_y - 3, robot->pos_x + 4, robot->pos_y + 3);
-
+                robot->ingame = r.handy;
                 robot->print();
             }
             {
@@ -341,6 +343,7 @@ bool HRM_GUI::run() {
                     y = (target_y == y) ? y : y + dir_y;
                     clear_rectangle(robot->pos_x, robot->pos_y - 3, robot->pos_x + 4, robot->pos_y + 3);
                     robot->move(x, y);
+                    robot->ingame = r.handy;
                     robot->print();
                     Sleep(15);
                 }
