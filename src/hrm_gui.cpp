@@ -657,7 +657,7 @@ bool HRM_GUI::welcome() {
         set_cursor(border_x, last_y + 4);
         std::cout << '|' << std::endl << '+';
         new_y = cursor_now().y;
-        for (int i = 0; i < border_x; i++) {
+        for (int i = 0; i < border_x-1; i++) {
             std::cout << '-';
         }
         std::cout << '+';
