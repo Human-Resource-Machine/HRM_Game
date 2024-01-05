@@ -1,0 +1,10 @@
+4
+8
+inbox
+jumpifneg 4
+jump 7
+copyto 0
+sub 0
+sub 0
+outbox
+jump 1

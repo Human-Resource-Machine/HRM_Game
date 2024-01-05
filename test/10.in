@@ -1,0 +1,2597 @@
+3
+2595
+sub 0
+add 0
+sub 1
+copyfrom 0
+inbox
+jump 2
+outbox
+copyto 0
+jump 2
+jumpifzero 0
+copyfrom 2
+sub 1
+jumpifzero 1
+add 1
+add 2
+outbox
+inbox
+copyfrom 2
+jump 2
+add 1
+outbox
+jumpifzero 1
+inbox
+jumpifzero 1
+inbox
+sub 1
+copyto 1
+jumpifzero 2
+jump 1
+jumpifzero 2
+jump 2
+jumpifzero 2
+jump 0
+jump 0
+outbox
+copyto 2
+copyfrom 2
+inbox
+copyto 0
+copyfrom 1
+sub 0
+copyto 0
+jump 1
+copyto 1
+jump 1
+add 1
+inbox
+outbox
+inbox
+copyfrom 2
+copyto 1
+copyfrom 0
+outbox
+sub 0
+sub 0
+add 0
+outbox
+add 2
+add 1
+copyfrom 0
+outbox
+outbox
+inbox
+add 1
+add 1
+jumpifzero 2
+copyto 0
+outbox
+copyto 2
+inbox
+jumpifzero 1
+jumpifzero 1
+jump 2
+inbox
+sub 2
+copyfrom 2
+copyto 1
+add 2
+copyto 0
+copyfrom 2
+copyto 0
+sub 1
+outbox
+jumpifzero 2
+add 2
+outbox
+copyfrom 0
+copyto 1
+inbox
+add 2
+sub 0
+inbox
+sub 2
+copyto 2
+copyto 0
+inbox
+sub 0
+sub 1
+outbox
+copyfrom 2
+jump 0
+add 1
+copyfrom 1
+copyfrom 0
+add 1
+add 0
+sub 1
+outbox
+inbox
+outbox
+outbox
+jumpifzero 1
+add 1
+jumpifzero 2
+copyfrom 2
+add 0
+copyfrom 0
+copyfrom 2
+add 0
+sub 0
+copyto 0
+add 1
+outbox
+jumpifzero 1
+jump 2
+copyfrom 2
+jump 0
+sub 2
+copyfrom 2
+inbox
+jumpifzero 2
+outbox
+outbox
+outbox
+add 0
+copyto 0
+sub 0
+add 0
+sub 1
+copyto 1
+copyfrom 2
+outbox
+add 0
+copyto 1
+jumpifzero 0
+copyfrom 2
+inbox
+sub 2
+jump 2
+jump 0
+add 1
+outbox
+copyto 2
+inbox
+add 1
+add 1
+sub 0
+copyto 0
+outbox
+inbox
+add 0
+inbox
+add 0
+jump 0
+jump 2
+jump 1
+copyto 1
+copyto 2
+copyfrom 2
+jumpifzero 0
+jumpifzero 2
+add 2
+add 2
+jumpifzero 0
+copyto 0
+add 0
+inbox
+copyto 2
+sub 1
+copyfrom 0
+inbox
+sub 0
+jump 1
+inbox
+jump 0
+inbox
+copyfrom 0
+jump 2
+sub 0
+copyto 2
+add 2
+copyfrom 1
+add 0
+inbox
+jumpifzero 2
+copyto 0
+outbox
+sub 1
+add 2
+jump 1
+sub 1
+sub 2
+add 2
+copyto 2
+add 1
+jump 2
+sub 2
+add 1
+outbox
+jumpifzero 2
+copyto 1
+outbox
+inbox
+copyto 1
+copyto 0
+jumpifzero 2
+jump 2
+inbox
+add 2
+sub 1
+jumpifzero 1
+add 0
+copyto 2
+inbox
+jumpifzero 0
+outbox
+add 2
+jump 1
+copyto 0
+copyfrom 2
+outbox
+copyto 0
+sub 1
+jump 0
+sub 0
+sub 1
+sub 1
+jumpifzero 0
+copyto 2
+sub 0
+outbox
+sub 1
+copyfrom 2
+copyto 1
+outbox
+outbox
+inbox
+copyto 2
+add 1
+sub 0
+jump 1
+add 1
+outbox
+sub 2
+sub 2
+copyto 0
+jumpifzero 1
+add 2
+jumpifzero 0
+copyfrom 1
+jumpifzero 1
+jump 2
+copyto 0
+jump 0
+sub 0
+add 1
+sub 0
+outbox
+sub 2
+inbox
+inbox
+inbox
+copyto 0
+jump 0
+outbox
+copyto 2
+sub 2
+outbox
+jumpifzero 2
+inbox
+outbox
+add 1
+jump 1
+copyfrom 0
+sub 1
+add 2
+jumpifzero 0
+add 2
+copyfrom 0
+sub 2
+outbox
+copyto 0
+sub 0
+copyto 1
+inbox
+jumpifzero 1
+outbox
+jump 1
+outbox
+jump 1
+jumpifzero 0
+jump 2
+add 2
+jump 0
+sub 0
+jumpifzero 2
+jump 0
+add 1
+outbox
+outbox
+add 0
+sub 2
+copyfrom 2
+sub 2
+sub 2
+copyto 1
+add 1
+inbox
+jumpifzero 0
+sub 1
+jumpifzero 0
+copyto 0
+sub 0
+inbox
+add 0
+jumpifzero 0
+copyto 2
+copyfrom 0
+add 1
+copyto 1
+copyfrom 1
+copyfrom 2
+inbox
+jumpifzero 0
+add 0
+sub 1
+copyfrom 0
+sub 1
+add 2
+add 1
+sub 0
+jump 0
+copyto 1
+copyto 0
+add 2
+inbox
+outbox
+jump 1
+add 1
+outbox
+add 0
+jumpifzero 1
+jumpifzero 2
+copyfrom 1
+copyto 2
+outbox
+jump 1
+jump 0
+sub 0
+add 0
+sub 2
+add 1
+jumpifzero 0
+copyfrom 1
+outbox
+jumpifzero 0
+inbox
+jump 0
+outbox
+jump 1
+jump 2
+copyfrom 2
+copyfrom 0
+inbox
+sub 0
+copyfrom 2
+jumpifzero 2
+jumpifzero 2
+sub 0
+jumpifzero 1
+sub 2
+copyfrom 0
+inbox
+outbox
+sub 0
+sub 2
+add 0
+add 2
+copyfrom 0
+add 1
+jump 2
+jump 0
+outbox
+outbox
+jumpifzero 2
+jump 0
+copyfrom 0
+add 1
+copyto 0
+inbox
+sub 2
+jumpifzero 1
+add 0
+jump 2
+jumpifzero 2
+outbox
+add 0
+jump 1
+jump 1
+add 2
+inbox
+copyto 2
+jump 0
+copyto 2
+jumpifzero 1
+sub 1
+jumpifzero 0
+sub 1
+sub 0
+add 2
+outbox
+sub 1
+sub 0
+outbox
+add 2
+add 0
+copyfrom 1
+jumpifzero 2
+copyto 1
+jumpifzero 0
+copyfrom 2
+jump 2
+outbox
+copyto 0
+jumpifzero 2
+sub 0
+copyfrom 0
+jump 1
+sub 2
+copyto 0
+add 2
+jumpifzero 0
+add 2
+jumpifzero 1
+sub 2
+copyto 0
+jumpifzero 2
+copyto 1
+jumpifzero 1
+add 2
+sub 2
+inbox
+sub 0
+sub 0
+add 0
+jumpifzero 1
+copyto 0
+sub 1
+jumpifzero 1
+copyto 2
+jump 2
+jumpifzero 1
+outbox
+add 1
+copyfrom 1
+add 2
+jump 0
+add 0
+outbox
+jumpifzero 0
+sub 2
+inbox
+add 0
+jumpifzero 0
+add 1
+outbox
+add 1
+sub 0
+inbox
+jumpifzero 0
+jumpifzero 0
+copyfrom 0
+jump 1
+sub 0
+outbox
+jump 1
+sub 1
+inbox
+jumpifzero 2
+jumpifzero 1
+outbox
+inbox
+inbox
+outbox
+outbox
+sub 0
+copyfrom 2
+jump 2
+add 1
+inbox
+sub 1
+add 0
+add 0
+add 1
+add 1
+outbox
+copyfrom 2
+jumpifzero 1
+sub 1
+jumpifzero 1
+copyfrom 1
+add 0
+add 2
+outbox
+jump 0
+copyfrom 2
+sub 0
+sub 1
+inbox
+sub 2
+copyto 2
+copyfrom 1
+jumpifzero 0
+jumpifzero 0
+sub 1
+add 0
+inbox
+jumpifzero 2
+copyto 0
+jump 0
+copyto 1
+jumpifzero 0
+copyfrom 0
+jumpifzero 0
+inbox
+inbox
+jumpifzero 1
+copyfrom 0
+add 0
+outbox
+add 0
+inbox
+inbox
+copyto 2
+add 1
+inbox
+copyfrom 0
+jump 1
+sub 2
+copyfrom 0
+jumpifzero 0
+copyfrom 1
+jumpifzero 2
+add 0
+jump 0
+copyfrom 2
+copyto 2
+jump 2
+sub 2
+sub 2
+sub 0
+jumpifzero 0
+inbox
+copyto 1
+outbox
+add 1
+inbox
+copyfrom 0
+copyto 1
+sub 0
+add 0
+copyfrom 2
+copyto 2
+jumpifzero 1
+inbox
+outbox
+copyfrom 1
+copyfrom 1
+jump 2
+inbox
+add 0
+outbox
+copyfrom 1
+jumpifzero 1
+inbox
+jump 1
+copyto 0
+copyto 2
+sub 0
+sub 2
+outbox
+inbox
+add 0
+outbox
+add 2
+copyfrom 1
+add 2
+jumpifzero 1
+jumpifzero 0
+copyto 0
+jumpifzero 1
+copyfrom 0
+inbox
+jump 0
+outbox
+jumpifzero 0
+jumpifzero 2
+add 0
+copyto 2
+outbox
+jumpifzero 1
+copyto 2
+copyto 1
+outbox
+jump 2
+jump 0
+copyfrom 1
+copyto 1
+outbox
+jumpifzero 1
+copyfrom 2
+outbox
+copyfrom 2
+copyfrom 2
+sub 0
+sub 0
+jumpifzero 1
+jumpifzero 2
+inbox
+jump 0
+sub 0
+sub 0
+outbox
+outbox
+inbox
+copyto 0
+sub 0
+copyfrom 2
+jump 2
+jump 2
+sub 1
+jump 2
+outbox
+copyto 0
+jumpifzero 1
+jump 0
+copyfrom 0
+copyfrom 0
+outbox
+jumpifzero 2
+outbox
+copyfrom 2
+outbox
+add 1
+outbox
+copyfrom 0
+outbox
+add 2
+sub 1
+outbox
+sub 0
+sub 1
+copyfrom 2
+copyto 1
+copyto 0
+jump 2
+sub 1
+jump 1
+add 2
+copyfrom 0
+sub 1
+copyto 2
+jumpifzero 1
+add 1
+add 2
+add 0
+copyto 2
+inbox
+jumpifzero 1
+jumpifzero 2
+copyfrom 2
+jump 0
+jump 1
+copyto 0
+jump 2
+outbox
+outbox
+copyto 1
+jump 2
+jump 0
+copyto 2
+jumpifzero 1
+sub 1
+jump 2
+add 2
+outbox
+add 1
+sub 0
+copyto 2
+jump 1
+outbox
+outbox
+add 2
+copyfrom 0
+inbox
+copyfrom 1
+copyto 0
+jump 1
+sub 1
+outbox
+jumpifzero 0
+jumpifzero 0
+copyto 2
+outbox
+sub 0
+copyto 2
+jumpifzero 2
+jump 1
+copyto 0
+copyto 0
+jump 1
+sub 1
+copyto 0
+outbox
+sub 0
+sub 2
+jumpifzero 2
+outbox
+sub 1
+copyto 1
+copyfrom 0
+jumpifzero 1
+copyto 2
+inbox
+inbox
+outbox
+sub 1
+jumpifzero 0
+outbox
+inbox
+copyto 1
+outbox
+jumpifzero 2
+jumpifzero 1
+add 0
+sub 1
+add 0
+add 0
+copyto 2
+jumpifzero 2
+copyto 0
+outbox
+outbox
+sub 0
+outbox
+copyfrom 1
+sub 1
+jump 0
+copyto 2
+sub 2
+sub 0
+copyto 0
+copyto 0
+sub 0
+sub 1
+jump 1
+copyto 2
+add 2
+copyfrom 1
+add 1
+inbox
+copyfrom 2
+copyto 0
+jumpifzero 1
+add 1
+add 2
+jump 2
+outbox
+jump 0
+copyto 0
+jump 1
+copyto 2
+inbox
+copyto 0
+sub 0
+sub 2
+copyto 1
+inbox
+jump 1
+copyto 0
+copyfrom 2
+copyto 0
+copyfrom 0
+add 0
+jumpifzero 0
+inbox
+jump 2
+outbox
+jump 2
+jump 0
+copyfrom 0
+sub 2
+jump 1
+add 1
+inbox
+add 1
+copyfrom 1
+add 1
+outbox
+copyfrom 1
+jump 1
+jump 0
+outbox
+add 2
+copyto 2
+copyto 2
+sub 0
+jump 2
+copyfrom 0
+add 2
+jumpifzero 0
+inbox
+jump 2
+copyto 1
+outbox
+add 0
+jumpifzero 1
+jump 2
+copyfrom 2
+outbox
+sub 1
+jump 0
+sub 0
+jumpifzero 2
+inbox
+copyfrom 0
+jumpifzero 1
+add 1
+add 0
+jumpifzero 2
+copyto 1
+inbox
+add 0
+add 0
+sub 2
+add 2
+add 2
+copyfrom 0
+add 2
+inbox
+jump 2
+copyto 2
+jumpifzero 2
+inbox
+copyfrom 0
+outbox
+jumpifzero 0
+add 0
+copyfrom 0
+copyto 0
+copyto 2
+copyto 2
+sub 1
+copyfrom 1
+copyfrom 2
+jump 2
+copyto 1
+copyto 1
+jumpifzero 1
+add 0
+add 2
+add 1
+jump 2
+outbox
+copyto 1
+add 0
+outbox
+jump 0
+sub 0
+inbox
+add 0
+copyto 0
+add 0
+copyto 1
+inbox
+sub 0
+add 0
+jumpifzero 2
+copyto 0
+sub 2
+jump 1
+copyto 1
+jump 2
+copyto 1
+copyto 0
+inbox
+copyto 2
+sub 0
+add 1
+copyto 0
+add 1
+sub 2
+copyto 0
+jump 0
+jump 0
+inbox
+jump 2
+jumpifzero 0
+add 0
+jump 0
+jumpifzero 1
+copyto 0
+add 1
+jump 1
+jumpifzero 0
+jumpifzero 1
+outbox
+inbox
+copyfrom 2
+sub 2
+copyfrom 0
+jump 1
+outbox
+copyto 1
+jump 1
+sub 0
+sub 2
+add 2
+jumpifzero 0
+inbox
+sub 1
+inbox
+copyfrom 1
+add 0
+outbox
+copyfrom 2
+jumpifzero 0
+copyto 2
+jump 1
+outbox
+jump 1
+jumpifzero 0
+copyto 1
+copyto 2
+outbox
+copyto 0
+copyto 1
+inbox
+jumpifzero 1
+outbox
+jumpifzero 2
+add 2
+outbox
+sub 0
+jump 2
+copyto 2
+add 2
+jump 0
+add 2
+outbox
+inbox
+add 0
+add 2
+sub 1
+outbox
+copyfrom 0
+add 0
+copyfrom 2
+outbox
+copyto 1
+jumpifzero 0
+jump 2
+jump 0
+copyto 0
+outbox
+copyfrom 1
+sub 0
+copyto 0
+jump 1
+inbox
+sub 1
+add 2
+sub 2
+sub 1
+jumpifzero 0
+jumpifzero 1
+copyto 0
+inbox
+jumpifzero 1
+copyfrom 1
+copyto 1
+copyfrom 2
+copyto 1
+sub 1
+inbox
+sub 0
+copyto 0
+outbox
+copyto 0
+jumpifzero 1
+jumpifzero 2
+outbox
+inbox
+jumpifzero 2
+sub 1
+sub 0
+add 0
+inbox
+jumpifzero 1
+sub 0
+outbox
+add 0
+copyfrom 1
+copyto 1
+copyto 2
+outbox
+sub 1
+jump 1
+outbox
+jumpifzero 1
+jump 1
+copyfrom 2
+sub 1
+sub 2
+sub 1
+add 1
+outbox
+add 0
+add 2
+jump 0
+add 1
+outbox
+add 0
+sub 2
+sub 1
+copyfrom 1
+sub 0
+jump 2
+inbox
+jumpifzero 0
+jump 2
+copyfrom 2
+inbox
+copyto 1
+outbox
+jump 2
+inbox
+sub 1
+jump 0
+jump 1
+copyto 1
+jump 0
+inbox
+copyfrom 0
+sub 1
+outbox
+outbox
+jumpifzero 2
+sub 0
+add 2
+copyto 1
+sub 0
+copyfrom 1
+inbox
+copyto 2
+jumpifzero 0
+copyfrom 0
+sub 1
+inbox
+copyto 2
+inbox
+inbox
+sub 0
+add 2
+jump 2
+inbox
+inbox
+jumpifzero 2
+outbox
+copyfrom 1
+copyfrom 1
+inbox
+outbox
+copyfrom 1
+copyto 2
+add 2
+jump 1
+inbox
+jumpifzero 1
+jumpifzero 1
+add 0
+copyfrom 1
+outbox
+jump 0
+outbox
+jumpifzero 2
+outbox
+copyto 0
+outbox
+sub 0
+outbox
+outbox
+copyfrom 0
+outbox
+copyto 2
+copyfrom 2
+inbox
+sub 0
+add 0
+outbox
+outbox
+inbox
+jump 1
+copyto 1
+jump 0
+jump 0
+inbox
+outbox
+outbox
+outbox
+sub 0
+jump 1
+sub 2
+outbox
+outbox
+jump 0
+jump 1
+copyfrom 1
+copyto 0
+jumpifzero 2
+add 2
+add 1
+inbox
+copyto 2
+jumpifzero 0
+inbox
+inbox
+inbox
+add 0
+copyfrom 1
+jump 2
+copyto 1
+outbox
+jumpifzero 0
+outbox
+jumpifzero 0
+sub 0
+sub 2
+jump 2
+copyto 0
+add 2
+copyfrom 0
+copyfrom 1
+add 2
+jumpifzero 2
+inbox
+copyfrom 1
+outbox
+copyto 1
+copyfrom 0
+jumpifzero 2
+sub 0
+inbox
+add 2
+sub 2
+copyfrom 0
+copyfrom 2
+sub 0
+copyfrom 2
+sub 1
+inbox
+outbox
+inbox
+sub 2
+add 2
+copyto 0
+jumpifzero 2
+jump 0
+sub 2
+jumpifzero 0
+jumpifzero 2
+jump 2
+outbox
+copyto 1
+jump 1
+outbox
+jump 0
+inbox
+inbox
+jumpifzero 0
+sub 1
+copyfrom 2
+inbox
+copyfrom 0
+copyfrom 1
+outbox
+jump 1
+jump 1
+copyto 2
+jump 1
+outbox
+sub 1
+add 2
+jump 1
+sub 0
+copyto 0
+jump 1
+jumpifzero 2
+add 2
+jump 1
+outbox
+jump 1
+copyfrom 0
+jumpifzero 0
+jumpifzero 0
+outbox
+inbox
+copyfrom 1
+jumpifzero 1
+inbox
+jumpifzero 2
+jump 2
+add 1
+jump 0
+copyfrom 1
+outbox
+add 2
+add 1
+add 1
+outbox
+jump 0
+inbox
+jumpifzero 1
+jump 1
+jumpifzero 2
+add 0
+jumpifzero 1
+inbox
+copyto 0
+copyfrom 2
+copyto 2
+jump 2
+jump 1
+copyto 2
+sub 2
+copyto 1
+copyto 0
+inbox
+outbox
+sub 1
+jumpifzero 2
+add 0
+outbox
+jumpifzero 2
+inbox
+outbox
+outbox
+jumpifzero 0
+copyto 2
+add 2
+outbox
+outbox
+jumpifzero 2
+outbox
+jump 1
+jumpifzero 2
+copyfrom 1
+copyto 0
+jump 1
+jumpifzero 0
+jumpifzero 1
+jump 2
+sub 1
+sub 0
+outbox
+outbox
+sub 0
+jumpifzero 0
+copyfrom 2
+jumpifzero 2
+jumpifzero 2
+outbox
+copyfrom 0
+copyfrom 2
+sub 0
+jumpifzero 2
+add 0
+add 1
+outbox
+jumpifzero 1
+jumpifzero 2
+inbox
+add 1
+sub 0
+inbox
+copyto 1
+copyto 1
+jumpifzero 2
+jumpifzero 2
+jumpifzero 1
+add 1
+outbox
+jumpifzero 1
+copyto 2
+jump 0
+copyto 0
+copyto 0
+copyto 0
+inbox
+jumpifzero 0
+copyto 0
+add 1
+add 2
+jump 2
+add 2
+copyto 2
+inbox
+jump 1
+jumpifzero 2
+jump 1
+copyto 2
+add 0
+jump 2
+copyto 2
+jump 0
+jump 2
+jump 1
+sub 2
+sub 1
+copyfrom 1
+copyfrom 1
+jumpifzero 0
+copyfrom 1
+copyto 1
+jumpifzero 1
+inbox
+copyto 1
+add 2
+copyfrom 0
+jump 2
+jump 1
+copyfrom 1
+outbox
+jumpifzero 0
+outbox
+copyto 1
+add 0
+jumpifzero 1
+jump 1
+copyto 0
+copyfrom 2
+copyto 0
+sub 2
+jumpifzero 1
+add 2
+copyto 1
+outbox
+sub 1
+outbox
+jump 2
+copyfrom 0
+add 0
+jump 0
+copyto 1
+copyto 1
+inbox
+copyfrom 1
+inbox
+outbox
+sub 2
+outbox
+copyto 0
+outbox
+add 0
+copyfrom 0
+outbox
+sub 1
+jumpifzero 1
+jump 0
+sub 1
+copyto 1
+add 2
+jumpifzero 1
+jump 1
+copyto 1
+inbox
+inbox
+inbox
+sub 1
+copyto 1
+inbox
+add 2
+add 2
+outbox
+jump 0
+jump 2
+sub 1
+sub 0
+sub 2
+inbox
+outbox
+sub 1
+outbox
+copyto 1
+add 2
+copyfrom 0
+add 1
+outbox
+copyfrom 0
+jumpifzero 1
+sub 2
+copyfrom 1
+sub 2
+inbox
+sub 2
+copyto 1
+copyfrom 2
+add 0
+sub 0
+outbox
+copyto 2
+jumpifzero 0
+sub 1
+copyto 2
+copyfrom 1
+copyfrom 1
+inbox
+inbox
+outbox
+inbox
+outbox
+copyfrom 1
+jump 2
+add 0
+add 1
+inbox
+copyfrom 1
+copyfrom 0
+inbox
+inbox
+sub 2
+inbox
+copyfrom 0
+jump 2
+inbox
+inbox
+add 2
+copyfrom 0
+copyfrom 1
+sub 1
+sub 0
+outbox
+add 2
+sub 0
+add 1
+jump 2
+jump 2
+add 0
+jump 2
+jump 1
+copyto 2
+jumpifzero 2
+inbox
+sub 0
+copyto 2
+outbox
+jumpifzero 1
+add 0
+jumpifzero 0
+add 0
+outbox
+copyfrom 1
+copyto 0
+jump 1
+add 0
+sub 2
+inbox
+inbox
+add 1
+outbox
+jumpifzero 2
+jumpifzero 1
+copyfrom 0
+jumpifzero 1
+jumpifzero 2
+jump 2
+jump 2
+inbox
+copyfrom 2
+outbox
+outbox
+copyfrom 1
+add 0
+jumpifzero 1
+jump 2
+inbox
+jumpifzero 1
+outbox
+jump 2
+jump 1
+jumpifzero 2
+jumpifzero 2
+copyfrom 0
+sub 0
+copyto 1
+inbox
+sub 0
+jump 1
+copyto 2
+inbox
+jumpifzero 2
+jumpifzero 2
+add 0
+copyto 1
+inbox
+outbox
+inbox
+sub 0
+jump 1
+inbox
+sub 0
+copyfrom 1
+sub 2
+add 2
+copyto 0
+add 0
+jump 0
+copyto 2
+copyto 1
+outbox
+jump 1
+copyto 1
+sub 0
+sub 2
+jumpifzero 1
+jumpifzero 1
+jumpifzero 0
+outbox
+copyto 0
+inbox
+sub 0
+outbox
+jumpifzero 1
+jumpifzero 1
+inbox
+jumpifzero 2
+outbox
+add 0
+jumpifzero 1
+jumpifzero 2
+outbox
+jumpifzero 0
+copyfrom 1
+copyfrom 2
+jump 1
+copyfrom 0
+inbox
+add 0
+sub 2
+copyto 0
+inbox
+outbox
+sub 1
+add 2
+sub 1
+jumpifzero 0
+jumpifzero 1
+jumpifzero 1
+inbox
+inbox
+add 0
+sub 0
+outbox
+add 2
+add 0
+add 1
+jump 2
+copyfrom 0
+copyfrom 1
+inbox
+outbox
+add 2
+sub 1
+copyto 0
+add 2
+copyto 2
+jump 2
+jump 1
+copyfrom 0
+jump 0
+copyfrom 0
+copyfrom 2
+jumpifzero 2
+copyto 1
+outbox
+copyfrom 2
+copyfrom 2
+inbox
+jumpifzero 2
+inbox
+inbox
+add 0
+copyto 0
+sub 2
+add 2
+inbox
+jumpifzero 1
+add 2
+sub 0
+copyfrom 1
+jumpifzero 2
+copyfrom 2
+sub 1
+outbox
+copyto 0
+copyfrom 2
+outbox
+outbox
+jumpifzero 0
+add 2
+copyto 1
+outbox
+inbox
+add 0
+jumpifzero 2
+outbox
+outbox
+copyfrom 1
+copyfrom 0
+jumpifzero 1
+add 0
+add 0
+sub 2
+inbox
+add 1
+jumpifzero 2
+inbox
+inbox
+copyfrom 0
+outbox
+copyto 1
+jump 0
+jump 1
+add 1
+inbox
+copyto 1
+add 2
+jump 0
+jumpifzero 0
+jump 0
+inbox
+inbox
+outbox
+copyto 0
+jump 2
+jumpifzero 2
+sub 1
+outbox
+inbox
+sub 2
+copyto 2
+jump 0
+add 0
+outbox
+copyto 1
+sub 0
+jumpifzero 0
+jump 2
+copyfrom 0
+sub 1
+copyfrom 2
+add 2
+add 2
+sub 1
+outbox
+outbox
+inbox
+inbox
+copyto 1
+copyto 1
+jumpifzero 1
+copyfrom 1
+add 0
+jump 1
+jump 0
+inbox
+copyfrom 1
+jump 0
+outbox
+inbox
+jumpifzero 2
+copyto 1
+sub 1
+jumpifzero 2
+sub 2
+copyfrom 0
+copyfrom 2
+outbox
+add 0
+inbox
+jump 1
+copyfrom 0
+jump 2
+add 1
+copyfrom 2
+outbox
+inbox
+jumpifzero 2
+jump 0
+jump 0
+outbox
+sub 2
+copyfrom 1
+inbox
+outbox
+jumpifzero 1
+outbox
+jump 2
+jump 1
+add 0
+outbox
+inbox
+sub 0
+sub 0
+jumpifzero 1
+inbox
+add 0
+jumpifzero 2
+copyto 1
+copyto 1
+jump 0
+copyfrom 0
+outbox
+copyto 1
+copyto 2
+jump 0
+inbox
+jump 1
+jump 2
+copyfrom 1
+copyfrom 2
+sub 1
+copyto 0
+add 0
+add 0
+copyto 1
+outbox
+jump 0
+outbox
+jumpifzero 2
+outbox
+jump 1
+jumpifzero 0
+add 2
+jumpifzero 1
+copyfrom 2
+jump 2
+inbox
+sub 0
+jumpifzero 1
+copyfrom 2
+jumpifzero 0
+copyfrom 1
+add 2
+jumpifzero 2
+add 0
+sub 1
+sub 2
+copyfrom 2
+outbox
+add 2
+add 2
+copyto 0
+jumpifzero 1
+inbox
+jumpifzero 0
+jumpifzero 1
+copyfrom 2
+outbox
+sub 0
+copyfrom 0
+add 0
+outbox
+sub 0
+outbox
+copyto 0
+jumpifzero 2
+copyto 2
+jump 0
+add 1
+copyto 0
+outbox
+add 0
+outbox
+inbox
+sub 0
+copyto 2
+outbox
+outbox
+add 2
+add 1
+copyfrom 0
+sub 2
+outbox
+jump 1
+jump 2
+jump 2
+jumpifzero 0
+jump 1
+copyfrom 1
+copyfrom 2
+outbox
+outbox
+add 0
+outbox
+outbox
+jumpifzero 2
+jump 0
+inbox
+sub 2
+jump 0
+sub 0
+add 1
+inbox
+copyfrom 1
+jumpifzero 1
+sub 1
+jumpifzero 2
+jumpifzero 1
+sub 1
+sub 0
+sub 1
+jump 1
+sub 0
+copyto 1
+add 0
+copyto 2
+inbox
+add 0
+copyfrom 2
+add 2
+jump 2
+outbox
+copyto 2
+copyfrom 1
+sub 2
+outbox
+copyfrom 2
+outbox
+add 2
+jump 2
+add 0
+outbox
+inbox
+copyfrom 0
+jumpifzero 1
+sub 0
+copyfrom 0
+add 2
+jump 0
+inbox
+jump 1
+sub 2
+copyfrom 0
+jump 1
+add 2
+add 0
+outbox
+outbox
+add 1
+copyfrom 1
+add 1
+copyfrom 0
+sub 1
+copyfrom 1
+outbox
+jump 1
+add 0
+inbox
+copyfrom 2
+copyto 2
+inbox
+copyto 0
+copyto 2
+copyto 1
+sub 1
+jumpifzero 1
+copyto 2
+copyto 0
+copyfrom 0
+copyto 1
+outbox
+add 0
+add 2
+sub 2
+jumpifzero 0
+copyfrom 0
+inbox
+outbox
+copyto 0
+jumpifzero 2
+jump 0
+jump 1
+add 1
+add 1
+jumpifzero 1
+copyfrom 2
+inbox
+jump 2
+copyfrom 1
+jumpifzero 0
+copyfrom 0
+jump 1
+jumpifzero 2
+jump 1
+outbox
+sub 2
+sub 0
+copyfrom 1
+inbox
+jumpifzero 1
+copyto 0
+copyfrom 2
+inbox
+jump 2
+jumpifzero 2
+inbox
+jump 0
+outbox
+outbox
+outbox
+sub 2
+copyfrom 1
+outbox
+sub 0
+copyfrom 2
+sub 2
+copyto 0
+copyto 1
+jumpifzero 2
+sub 2
+jump 1
+jump 2
+copyto 1
+outbox
+jump 1
+copyfrom 1
+jumpifzero 1
+jumpifzero 1
+outbox
+sub 0
+copyto 1
+jump 1
+copyfrom 0
+copyto 2
+inbox
+jump 0
+jumpifzero 1
+outbox
+sub 2
+copyto 0
+add 1
+sub 1
+inbox
+jumpifzero 0
+jumpifzero 0
+copyto 2
+jumpifzero 2
+add 0
+inbox
+copyto 2
+inbox
+sub 0
+copyfrom 1
+add 1
+jumpifzero 2
+copyto 0
+add 2
+inbox
+outbox
+add 1
+copyfrom 1
+inbox
+copyto 2
+sub 2
+sub 2
+jumpifzero 0
+add 0
+jump 2
+copyto 1
+add 0
+sub 0
+jump 2
+sub 1
+inbox
+copyfrom 1
+inbox
+inbox
+sub 1
+copyfrom 2
+outbox
+jump 0
+inbox
+jump 2
+copyto 0
+inbox
+jumpifzero 2
+copyfrom 2
+inbox
+jump 2
+inbox
+outbox
+sub 1
+sub 0
+copyfrom 2
+copyto 0
+inbox
+inbox
+outbox
+copyfrom 1
+jump 0
+add 0
+outbox
+sub 2
+add 1
+outbox
+inbox
+add 2
+jump 2
+jumpifzero 2
+sub 0
+outbox
+inbox
+inbox
+copyfrom 1
+sub 0
+copyto 1
+outbox
+jump 0
+inbox
+outbox
+inbox
+outbox
+outbox
+copyto 1
+jumpifzero 1
+copyto 2
+jump 0
+inbox
+copyfrom 1
+copyto 0
+outbox
+inbox
+copyto 0
+outbox
+jump 2
+outbox
+sub 0
+inbox
+add 0
+copyfrom 1
+outbox
+jumpifzero 0
+add 1
+jumpifzero 1
+inbox
+inbox
+jumpifzero 0
+copyto 0
+jump 0
+jump 1
+add 2
+copyfrom 1
+jump 0
+jumpifzero 2
+add 0
+inbox
+sub 0
+copyto 1
+jump 2
+copyto 1
+outbox
+jump 2
+jumpifzero 2
+copyto 2
+jump 1
+add 2
+jump 1
+jumpifzero 0
+sub 1
+inbox
+sub 2
+add 1
+jumpifzero 0
+jump 2
+outbox
+sub 1
+add 1
+outbox
+copyto 0
+add 1
+copyfrom 1
+jump 2
+add 2
+outbox
+outbox
+jumpifzero 1
+copyto 0
+copyto 1
+copyfrom 1
+sub 0
+copyfrom 2
+inbox
+add 1
+outbox
+add 1
+jumpifzero 0
+outbox
+copyto 0
+jump 0
+sub 0
+jumpifzero 0
+outbox
+copyto 1
+jump 1
+jumpifzero 2
+jump 2
+sub 1
+inbox
+inbox
+copyto 0
+copyto 2
+add 2
+inbox
+sub 2
+inbox
+outbox
+sub 0
+jump 0
+copyto 0
+copyfrom 0
+sub 0
+inbox
+jump 0
+jumpifzero 2
+jump 1
+copyto 0
+outbox
+copyfrom 2
+copyfrom 0
+outbox
+copyfrom 1
+copyto 2
+sub 1
+sub 2
+copyfrom 1
+sub 1
+add 1
+jump 2
+jump 1
+jumpifzero 2
+jump 1
+copyto 1
+inbox
+copyfrom 0
+jumpifzero 0
+sub 1
+add 2
+copyfrom 2
+inbox
+jumpifzero 1
+inbox
+sub 2
+copyfrom 1
+outbox
+copyto 0
+jump 2
+copyto 1
+add 0
+sub 0
+add 0
+jumpifzero 0
+copyfrom 0
+inbox
+add 1
+add 1
+jump 2
+add 2
+copyto 2
+sub 0
+copyfrom 2
+jump 1
+copyfrom 1
+outbox
+copyto 0
+jumpifzero 0
+jump 1
+copyfrom 0
+outbox
+jumpifzero 0
+sub 0
+inbox
+jumpifzero 1
+jumpifzero 1
+inbox
+copyto 0
+sub 0
+copyto 1
+inbox
+copyto 1
+sub 2
+sub 0
+copyto 1
+copyfrom 2
+jumpifzero 2
+jumpifzero 1
+jump 0
+jumpifzero 0
+copyfrom 0
+copyfrom 1
+inbox
+outbox
+add 2
+add 1
+copyfrom 0
+outbox
+jump 2
+copyto 1
+copyto 2
+copyto 0
+sub 0
+sub 2
+add 2
+inbox
+jump 2
+outbox
+copyto 1
+copyto 2
+jump 2
+copyto 1
+copyto 2
+inbox
+copyfrom 1
+add 2
+sub 2
+sub 1
+add 1
+outbox
+jump 2
+jump 2
+jump 0
+inbox
+outbox
+copyfrom 2
+inbox
+sub 2
+sub 1
+jumpifzero 2
+jumpifzero 1
+jumpifzero 1
+jump 0
+add 0
+add 0
+outbox
+outbox
+outbox
+jumpifzero 0
+copyfrom 1
+copyto 2
+jump 1
+copyfrom 2
+copyto 2
+add 1
+jumpifzero 1
+jump 2
+copyfrom 1
+outbox
+inbox
+sub 1
+add 2
+jumpifzero 2
+sub 2
+jump 1
+copyto 1
+outbox
+jump 2
+inbox
+copyfrom 1
+jump 0
+sub 1
+outbox
+outbox
+copyfrom 2
+sub 2
+add 1
+jumpifzero 1
+copyto 1
+copyto 0
+inbox
+jump 0
+outbox
+jump 1
+copyto 0
+add 1
+outbox
+jumpifzero 2
+copyfrom 1
+copyfrom 0
+jumpifzero 1
+inbox
+add 1
+jumpifzero 2
+inbox
+inbox
+copyto 2
+jump 0
+jump 1
+copyto 1
+jump 1
+add 2
+jump 0
+jumpifzero 2
+outbox
+copyfrom 0
+jumpifzero 2
+copyfrom 1
+sub 1
+jumpifzero 2
+copyfrom 2
+sub 0
+sub 2
+inbox
+sub 1
+outbox
+jumpifzero 2
+outbox
+copyfrom 1
+add 2
+add 1
+add 1
+copyto 1
+copyto 1
+sub 0
+jumpifzero 0
+jumpifzero 0
+copyto 1
+outbox
+jump 2
+copyto 2
+add 0
+copyfrom 2
+add 2
+copyfrom 0
+sub 0
+jump 1
+jumpifzero 2
+jumpifzero 1
+add 1
+jump 1
+copyfrom 1
+jump 0
+jump 0
+add 0
+jumpifzero 0
+sub 1
+copyfrom 2
+jump 0
+copyto 2
+add 1
+add 1
+inbox
+outbox
+outbox
+copyfrom 1
+copyto 0
+jump 0
+copyto 2
+outbox
+copyfrom 0
+copyfrom 1
+copyfrom 0
+copyto 1
+jumpifzero 0
+sub 2
+outbox
+sub 1
+jumpifzero 1
+sub 0
+outbox
+jump 2
+copyfrom 2
+outbox
+outbox
+jumpifzero 2
+jumpifzero 0
+outbox
+outbox
+jumpifzero 1
+copyto 0
+outbox
+inbox
+jumpifzero 0
+inbox
+sub 0
+jump 2
+inbox
+jump 2
+outbox
+inbox
+sub 1
+outbox
+add 0
+copyto 0
+outbox
+sub 0
+outbox
+jump 1
+jumpifzero 0
+inbox
+copyto 1
+copyfrom 0
+jumpifzero 0
+inbox
+copyto 2
+sub 1
+copyto 1
+copyfrom 0
+jump 2
+sub 2
+outbox
+jump 2
+add 2
+copyto 2
+add 1
+add 2
+jumpifzero 1
+sub 2
+add 1
+copyto 2
+copyto 1
+inbox
+add 0
+outbox
+sub 2
+jump 1
+copyto 2
+copyfrom 0
+copyfrom 1
+copyto 2
+copyto 2
+add 2
+jumpifzero 1
+copyto 0
+sub 0
+jumpifzero 0
+jump 1
+jumpifzero 1
+jump 0
+outbox
+jump 1
+jumpifzero 0
+jump 0
+copyto 0
+inbox
+copyto 2
+inbox
+jump 0
+jumpifzero 1
+jump 0
+add 0
+copyfrom 1
+inbox
+copyfrom 1
+copyfrom 0
+jump 0
+jump 0
+add 2
+copyfrom 2
+outbox
+inbox
+copyfrom 2
+sub 1
+copyfrom 0
+jump 0
+jump 2
+copyto 1
+add 0
+outbox
+jumpifzero 0
+copyto 1
+jumpifzero 0
+sub 0
+outbox
+inbox
+add 0
+outbox
+outbox
+sub 2
+sub 0
+copyfrom 2
+jumpifzero 2
+inbox
+copyfrom 0
+inbox
+add 0
+sub 1
+copyto 1
+jump 2
+jumpifzero 0
+inbox
+add 0
+jumpifzero 1
+copyto 1
+add 1
+copyto 2
+sub 2
+jumpifzero 2
+sub 0
+outbox
+sub 2
+inbox
+inbox
+copyfrom 2
+copyto 0
+sub 1
+add 0
+add 0
+inbox
+inbox
+sub 1
+sub 0
+outbox
+add 0
+copyfrom 1
+sub 0
+add 2
+jump 2
+copyfrom 1
+inbox
+inbox
+jump 1
+add 2
+copyfrom 0
+copyto 1
+add 1
+sub 0
+sub 1
+jump 1
+add 0
+copyfrom 2
+jump 2
+sub 1
+inbox
+add 1
+inbox
+outbox
+jumpifzero 1
+add 0
+sub 1
+sub 1
+copyfrom 2
+add 1
+jumpifzero 1
+outbox
+copyto 1
+outbox
+sub 0
+jump 2
+add 0
+jumpifzero 0
+copyfrom 2
+copyto 1
+add 2
+inbox
+add 1
+copyfrom 1
+jump 2
+jumpifzero 0
+copyto 2
+add 2
+copyfrom 2
+outbox
+jumpifzero 0
+copyfrom 0
+copyto 1
+add 0
+copyfrom 0
+jumpifzero 1
+outbox
+sub 1
+jump 2
+outbox
+add 2
+inbox
+add 0
