@@ -10,5 +10,5 @@
         "add",
         "jump"
     ],
-    "description": "将inbox中的每个数乘以40并输出到outbox中。\n学会让程序变得简洁是每位程序员的基本素养。"
+    "description": "将inbox中的每个数乘以40并输出到outbox中。\n学会让程序变得简洁是每位程序员的基本素养。\n输入序列：6, -2, 2, 0\n目标输出序列：240, -80, 80, 0\n可用空地数：5\n可用指令集：inbox,outbox,copyfrom,copyto,add,jump"
 }

@@ -9,5 +9,5 @@
         "add",
         "jump"
     ],
-    "description": "对于inbox中的每个数，将其乘以8并把结果输出到outbox中。\n一位合格的程序员不应该使用大量冗余的加法指令。"
+    "description": "对于inbox中的每个数，将其乘以8并把结果输出到outbox中。\n一位合格的程序员不应该使用大量冗余的加法指令。\n输入序列：7, -3, 6, 0\n目标输出序列：56, -24, 48, 0\n可用空地数：3\n可用指令集：inbox,outbox,copyto,add,jump"
 }

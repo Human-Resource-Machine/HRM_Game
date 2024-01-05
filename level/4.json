@@ -13,5 +13,5 @@
         "jumpifzero",
         "jumpifneg"
     ],
-    "description": "把INBOX中的每样东西送到OUTBOX中。但是，如果是个负数，请先去掉它的负号。"
+    "description": "把INBOX中的每样东西送到OUTBOX中。但是，如果是个负数，请先去掉它的负号。\n输入序列：3, -7, -3, 0, -8, -7\n目标输出序列：3, 7, 3, 0, 8, 7\n可用空地数：3\n可用指令集：inbox,outbox,copyfrom,copyto,add,sub,jump,jumpifzero,jumpifneg"
 }
