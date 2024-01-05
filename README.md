@@ -482,7 +482,7 @@ jump 1
 
 #### 编译、运行说明
 
-![image-20240106022704627](C:\Users\10787\AppData\Roaming\Typora\typora-user-images\image-20240106022704627.png)
+![image-20240106022704627](.\media\image-20240106022704627.png)
 
 > Windows 环境下 + 需要安装Mingw工具并添加好环境变量
 
