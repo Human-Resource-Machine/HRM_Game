@@ -194,10 +194,15 @@ bool HRM_GUI::run() {
             r.add_instruction(s);
         }
     } else if (op == "2") {
-        std::cout << "请完整输入您存储文件的相对路径/绝对路径" << std::endl;
+        std::ifstream fin;
         std::string path;
-        std::getline(std::cin, path);
-        std::ifstream fin(path);
+        do {
+            std::cout << "请完整输入您存储文件的相对路径/绝对路径" << std::endl;
+
+            std::getline(std::cin, path);
+            fin.open(path);
+        } while (not fin.is_open());
+
         std::string s;
         r.input_ = input;
 //        assert(flag);
