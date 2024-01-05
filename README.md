@@ -425,10 +425,73 @@ while (target_x != x or target_y != y) {
 
 #### 游戏测试
 
+
+
 #### 自由创新关卡
+
+##### 利用给定的有限指令实现乘法
+
+对于程序员来说，失去了乘法的手段无疑失去了探索编程世界一半的机会。
+
+为此我们启发玩家在给定的有限的指令上实现乘法运算，为了实现这一点，我们特地将这一关卡（第七关）的每块空地初始化为1，以便玩家可以实现类似于高级语言
+
+```c++
+// 为了实现 c = a*b
+int c = a;
+for(int i=b-1;i > 0; i--)
+{
+    c += a;
+}
+```
+
+来实现一个“伪乘法”
+
+我们也在`ans/7`文件中给出了参考做法：
+
+```
+inbox
+copyto 0
+copyto 1
+inbox
+sub 3
+copyto 2
+jumpifzero 15
+copyfrom 1
+add 0
+copyto 1
+copyfrom 2
+sub 3
+copyto 2
+jump 7
+copyfrom 1
+outbox
+jump 1
+```
+
+即利用乘法可以拆分为加法的循环的思想，对于 `a*b`，将 b 个 a 相加即可，可以使用 `jumpifzero` 来实现循环的结构，判断何时 a 已经加了 b 次。
 
 #### 特色功能
 
 我们制作了一个游戏存档功能，能够分别保存三位不同玩家的性别（头像）、名字、闯关进度。同时支持新建玩家与替换原有玩家。
 
 #### 小组分工
+
+胡越舟：游戏主体逻辑和游戏测试
+
+苏明宇：用户界面GUI和关卡设计
+
+#### 编译、运行说明
+
+![image-20240106022704627](C:\Users\10787\AppData\Roaming\Typora\typora-user-images\image-20240106022704627.png)
+
+> Windows 环境下 + 需要安装Mingw工具并添加好环境变量
+
+* 进入项目根目录
+* `mkdir build`
+* `cd build`
+* `cmake .. -G "MinGW Makefiles"`
+* `cmake --build .`
+
+即可在bin目录中找到 `game.exe` 可执行文件，在终端打开并执行即可进入游戏
+
+当然也可以使用 vscode 的cmake插件代替复杂的指令自动实现编译的功能
