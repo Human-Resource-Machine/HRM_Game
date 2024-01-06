@@ -468,7 +468,7 @@ outbox
 jump 1
 ```
 
-即利用乘法可以拆分为加法的循环的思想，对于 `a*b`，将 b 个 a 相加即可，可以使用 `jumpifzero` 来实现循环的结构，判断何时 a 已经加了 b 次。
+即利用乘法可以拆分为加法的循环的思想，对于 $a\times b$，将 b 个 a 相加即可，可以使用 `jumpifzero` 来实现循环的结构，判断何时 a 已经加了 b 次。
 
 #### 特色功能
 
@@ -489,9 +489,14 @@ jump 1
 * 进入项目根目录
 * `mkdir build`
 * `cd build`
-* `cmake .. -G "MinGW Makefiles"`
+* `cmake .. -G "MinGW Makefiles"`（请确保已经安装好Mingw工具链并将bin目录配置到环境变量）
 * `cmake --build .`
 
 即可在bin目录中找到 `game.exe` 可执行文件，在终端打开并执行即可进入游戏
 
 当然也可以使用 vscode 的cmake插件代替复杂的指令自动实现编译的功能
+
+**我们提交的压缩包中已经包含了编译好的bin目录和build目录，bin目录下的exe文件可以直接打开。如果需要重新生成可执行文件，请首先删掉bin目录和build目录再按照上述流程操作。**
+
+##### 展示视频链接
+https://cloud.tsinghua.edu.cn/f/3156ae9d0c1b4c4a90f7/
